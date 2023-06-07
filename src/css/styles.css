@@ -1,6 +1,6 @@
 
 html {
-  background: linear-gradient(90deg, rgb(118, 213, 253) 0%, rgb(63, 177, 219) 20%, rgb(22, 75, 166) 100%);
+  /* background: linear-gradient(90deg, rgb(118, 213, 253) 0%, rgb(63, 177, 219) 20%, rgb(22, 75, 166) 100%); */
   height: 100%;
 }
 
@@ -10,11 +10,22 @@ body {
 
 /* login */
 
+.login-view {
+  background-image: url('.././images/resort.jpg');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
 .login-container {
   width: 25vw;
   height: 60vh;
-  border-radius: 15px;
-  background-color: rgb(255, 255, 255);
+  border-radius: 25px;
+  border: solid rgb(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
   position: absolute;
   transform: translate(-50%, -50%);
   margin: 50vh 50vw 0;
@@ -25,8 +36,8 @@ body {
 }
 
 .option-container {
-  margin-top: 10px;
-  width: 60%;
+  margin-top: 20px;
+  width: 65%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -37,11 +48,20 @@ body {
   align-items: center;
 }
 
+.inputs {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
 .input-container {
   display: flex;
   margin-top: 10px;
   justify-content: space-between;
   width: 70%;
+  align-items: center;
 }
 
 .login-container p {
