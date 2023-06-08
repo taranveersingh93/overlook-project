@@ -19,5 +19,5 @@ const activateLoginBtn = () => {
 }
 
 export {
-  activateLoginBtn
+  activateLoginBtn,
 }

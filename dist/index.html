@@ -8,7 +8,7 @@
 </head>
 <body>
   <section class="login-view">
-    <section class="login-container">
+    <form class="login-container">
       <div class="option-container">
         <section class="individual-option customer">
           <input type="radio" id="customerLogin" name="login" value="customer-login">
@@ -25,14 +25,14 @@
           <input type="text" class="username-input">
         </div>
         <div class="password-container input-container">
-          <p class="username">Password: </p>
+          <p class="password">Password: </p>
           <input type="text" class="password-input">
         </div>
       </div>
-      <button class="login-button" disabled>
+      <button type="submit" class="login-button" disabled>
         Login
       </button>
-    </section>
+    </form>
   </section>
 
   <script src="bundle.js"></script>
