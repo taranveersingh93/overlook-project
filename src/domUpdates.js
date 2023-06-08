@@ -1,5 +1,5 @@
 import {
-  checkForUser
+  getUser
 } from './apiCalls';
 
 import {
@@ -46,7 +46,7 @@ const submitUserData = () => {
   if (password === "overlook2021" && userInput.startsWith("customer")) {
     hideLoginError();
     username = usernameInput.value;
-    checkForUser();
+    getUser();
   } else {
     showLoginError();
   }

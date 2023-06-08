@@ -6,7 +6,7 @@ import {
 
 let currentUser;
 
-const checkForUser = () => {
+const getUser = () => {
   const queryID = username.slice(8);
   fetch(`http://localhost:3001/api/v1/customers/${queryID}`)
     .then(response => response.json())
@@ -26,6 +26,6 @@ const checkForUser = () => {
 }
 
 export {
-  checkForUser
+  getUser
 }
 
