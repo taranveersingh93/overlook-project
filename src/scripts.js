@@ -8,7 +8,7 @@ import {
 } from './domUpdates';
 
 import {
-  
+  checkForUser
 } from './apiCalls'
 
 // DOM elements
@@ -21,6 +21,7 @@ const radioOptions = document.querySelector('.option-container');
 const userInputs = document.querySelector('.inputs');
 const form = document.querySelector('form');
 const radioButtons = document.querySelectorAll('.login-radio');
+const loginFeedback = document.querySelector('.login-feedback');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -42,4 +43,5 @@ export {
   managerLoginRadio,
   usernameInput,
   passwordInput,
+  loginFeedback
 }

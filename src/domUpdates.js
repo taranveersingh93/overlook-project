@@ -1,6 +1,5 @@
 import {
-  submitCustomerData,
-  submitManagerData
+  checkForUser
 } from './apiCalls';
 
 import {
@@ -8,7 +7,8 @@ import {
   customerLoginRadio,
   managerLoginRadio,
   usernameInput,
-  passwordInput
+  passwordInput,
+  loginFeedback
 } from './scripts'
 
 let username;
@@ -26,9 +26,30 @@ const activateLoginBtn = () => {
   } 
 }
 
+const showGenericLoginError = () => {
+  loginFeedback.innerText = "Something went wrong";
+  loginFeedback.classList.remove('invisible');
+}
+
+const showLoginError = () => {
+  loginFeedback.innerText = "Incorrect credentials"
+  loginFeedback.classList.remove('invisible');
+}
+
+const hideLoginError = () => {
+  loginFeedback.classList.add('invisible');
+}
+
 const submitUserData = () => {
-  username = usernameInput.value;
+  const userInput = usernameInput.value;
   password = passwordInput.value;
+  if (password === "overlook2021" && userInput.startsWith("customer")) {
+    hideLoginError();
+    username = usernameInput.value;
+    checkForUser();
+  } else {
+    showLoginError();
+  }
 }
 
 const selectRadio = (e) => {
@@ -42,5 +63,7 @@ export {
   username,
   password,
   selectRadio,
-  submitUserData
+  submitUserData,
+  showGenericLoginError,
+  showLoginError
 }
