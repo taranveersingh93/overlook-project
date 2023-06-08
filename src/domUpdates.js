@@ -1,4 +1,9 @@
 import {
+  submitCustomerData,
+  submitManagerData
+} from './apiCalls';
+
+import {
   loginBtn,
   customerLoginRadio,
   managerLoginRadio,
@@ -18,6 +23,15 @@ const activateLoginBtn = () => {
   } 
 }
 
+const submitUserData = () => {
+  if (customerLoginRadio.checked) {
+    submitCustomerData()
+  } else {
+    submitManagerData()
+  }
+}
+
 export {
   activateLoginBtn,
+  submitUserData
 }
