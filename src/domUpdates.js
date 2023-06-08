@@ -11,6 +11,9 @@ import {
   passwordInput
 } from './scripts'
 
+let username;
+let password;
+
 const activateLoginBtn = () => {
   const userTypeSelected = customerLoginRadio.checked || managerLoginRadio.checked;
   const userInputEntered = usernameInput.value && passwordInput.value;
@@ -24,11 +27,8 @@ const activateLoginBtn = () => {
 }
 
 const submitUserData = () => {
-  if (customerLoginRadio.checked) {
-    submitCustomerData()
-  } else {
-    submitManagerData()
-  }
+  username = usernameInput.value;
+  password = passwordInput.value;
 }
 
 const selectRadio = (e) => {
@@ -39,6 +39,8 @@ const selectRadio = (e) => {
 
 export {
   activateLoginBtn,
-  submitUserData,
-  selectRadio
+  username,
+  password,
+  selectRadio,
+  submitUserData
 }

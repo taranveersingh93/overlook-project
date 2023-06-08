@@ -7,6 +7,10 @@ import {
   selectRadio
 } from './domUpdates';
 
+import {
+  
+} from './apiCalls'
+
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
 const customerLoginRadio = document.querySelector('#customerLogin');
