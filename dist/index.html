@@ -7,10 +7,35 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+  <section class="login-view">
+    <form class="login-container">
+      <div class="option-container">
+        <section class="individual-option customer">
+          <input type="radio" class="login-radio" id="customerLogin" name="login" value="customer-login">
+          <label for="customerLogin">Customer</label>
+        </section>
+        <section class="individual-option manager" tabindex="0">
+          <input type="radio" class="login-radio" id="managerLogin" name="login" value="manager-login">
+          <label for="managerLogin">Manager</label>
+        </section>
+      </div>
+      <div class="inputs">
+        <div class="username-container input-container">
+          <p class="username input-label">Username: </p>
+          <input type="text" class="username-input">
+        </div>
+        <div class="password-container input-container">
+          <p class="password input-label">Password: </p>
+          <input type="password" class="password-input">
+        </div>
+      </div>
+      <p class="login-feedback invisible">Incorrect Login Credentials</p>
+      <button type="submit" class="login-button" disabled>
+        Login
+      </button>
+    </form>
+  </section>
 
+  <script src="bundle.js"></script>
 </body>
 </html>
