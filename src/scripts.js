@@ -3,7 +3,8 @@ import './css/styles.css';
 
 import {
   activateLoginBtn,
-  submitUserData
+  submitUserData,
+  selectRadio
 } from './domUpdates';
 
 // DOM elements
@@ -15,6 +16,7 @@ const passwordInput = document.querySelector('.password-input');
 const radioOptions = document.querySelector('.option-container');
 const userInputs = document.querySelector('.inputs');
 const form = document.querySelector('form');
+const radioButtons = document.querySelectorAll('.login-radio');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -22,6 +24,11 @@ userInputs.addEventListener("keyup", activateLoginBtn);
 form.addEventListener("submit", function(e) {
   e.preventDefault();
   submitUserData();
+});
+radioButtons.forEach(button => {
+  button.addEventListener("keydown", function(e) {
+    selectRadio(e);
+  })
 })
 
 // Exports

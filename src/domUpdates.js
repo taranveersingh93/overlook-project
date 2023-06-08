@@ -31,7 +31,14 @@ const submitUserData = () => {
   }
 }
 
+const selectRadio = (e) => {
+  if (e.key === "Enter") {
+    document.getElementById(e.target.id).checked = !document.getElementById(e.target.id).checked;
+  }
+}
+
 export {
   activateLoginBtn,
-  submitUserData
+  submitUserData,
+  selectRadio
 }
