@@ -1,14 +1,18 @@
+import { findRoomFromBooking } from './rooms'
+
 const filterBookingsByUser = (bookings, user) => bookings.filter(booking => booking.userID.toString() === user.id.toString());
 
 const checkIfUpcoming = (booking, currentDate) => {
   console.log(booking, currentDate);
   const bookedDate = booking.date;
   const refinedDate = Number(bookedDate.replaceAll("/", ""));
-  console.log(refinedDate > currentDate);
   return refinedDate > currentDate;
 }  
 
+const calculateCost = (rooms, bookings) =>  bookings.reduce((total, booking) => total + findRoomFromBooking(rooms, booking).costPerNight, 0)
+
 export {
   filterBookingsByUser,
-  checkIfUpcoming
+  checkIfUpcoming,
+  calculateCost
 }

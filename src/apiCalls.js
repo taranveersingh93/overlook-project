@@ -3,15 +3,13 @@ import {
   username,
   showGenericLoginError,
   showLoginError,
+  showDashboard
 } from './domUpdates'
 import {
   addPicture
 } from './rooms'
 
-let currentUser;
-let userBookings;
-let allRooms;
-let allBookings;
+const pageData = {};
 
 const convertFetchToJSON = url => {
   return fetch(url).then(response => response.json());
@@ -23,19 +21,22 @@ const getAllBookings = () => {
 }
 
 const setUserData = (user) => {
-  currentUser = user;
-  getRooms();
+  pageData.currentUser = user;
   return getAllBookings()
     .then(bookings => {
-      allBookings = bookings;
-      userBookings = filterBookingsByUser(allBookings, currentUser);      
+      pageData.allBookings = bookings;
+      pageData.userBookings = filterBookingsByUser(pageData.allBookings, pageData.currentUser);      
+      pageData.bookingsOfInterest = [...pageData.userBookings];
     })
 }
 
 const prepareDashboard = user => {
-  setUserData(user)
+  getRooms()
     .then(() => {
-      goToDashboard();
+      setUserData(user)
+        .then(() => {
+          showDashboard(pageData);
+        })
     })
 }
 
@@ -57,18 +58,17 @@ const getUser = () => {
 }
 
 const getRooms = () => {
-  convertFetchToJSON('http://localhost:3001/api/v1/rooms')
+  return convertFetchToJSON('http://localhost:3001/api/v1/rooms')
     .then(response => {
       if (!response.message) {
         const roomsInfo = response.rooms;
-        allRooms = roomsInfo.map(room => addPicture(room));
+        pageData.allRooms = roomsInfo.map(room => addPicture(room));
       }
     })
 }
 
 export {
   getUser,
-  userBookings,
-  currentUser
+  pageData
 }
 

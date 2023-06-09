@@ -18,6 +18,16 @@ const generateCurrentDate = () => {
   return fullDate;
 }
 
+const hideElement = element => {
+  element.classList.add('hidden');
+}
+
+const showElement = element => {
+  element.classList.remove('hidden');
+}
+
 export {
-  generateCurrentDate
+  generateCurrentDate,
+  hideElement,
+  showElement
 }

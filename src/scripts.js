@@ -25,6 +25,9 @@ const userInputs = document.querySelector('.inputs');
 const form = document.querySelector('form');
 const radioButtons = document.querySelectorAll('.login-radio');
 const loginFeedback = document.querySelector('.login-feedback');
+const loginView = document.querySelector('.login-view');
+const websiteView = document.querySelector('.website-view');
+const bookingListGrid = document.querySelector('.booking-list-grid');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -46,5 +49,8 @@ export {
   managerLoginRadio,
   usernameInput,
   passwordInput,
-  loginFeedback
+  loginFeedback,
+  loginView,
+  websiteView,
+  bookingListGrid
 }
