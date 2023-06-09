@@ -1,9 +1,8 @@
-import { filterBookingsByUser } from './bookings';
+import { checkIfUpcoming, filterBookingsByUser } from './bookings';
 import {
   username,
   showGenericLoginError,
   showLoginError,
-  showDashboard
 } from './domUpdates'
 
 let currentUser;
@@ -18,21 +17,27 @@ const getAllBookings = () => {
     .then(data => data.bookings);    
 }
 
-const setUserBookings = () => {
-  getAllBookings()
+const setUserData = (user) => {
+  currentUser = user;
+  return getAllBookings()
     .then(bookings => {
       userBookings = filterBookingsByUser(bookings, currentUser);
+    })
+}
+
+const prepareDashboard = user => {
+  setUserData(user)
+    .then(() => {
+      goToDashboard();
     })
 }
 
 const getUser = () => {
   const queryID = username.slice(8);
   convertFetchToJSON(`http://localhost:3001/api/v1/customers/${queryID}`)
-    .then(data => {
-      if (!data.message) {
-        currentUser = data;
-        setUserBookings();
-        showDashboard(currentUser);
+    .then(user => {
+      if (!user.message) {
+        prepareDashboard(user)
       } else {
         console.log(data.message)
         showLoginError();
@@ -45,6 +50,8 @@ const getUser = () => {
 }
 
 export {
-  getUser
+  getUser,
+  userBookings,
+  currentUser
 }
 
