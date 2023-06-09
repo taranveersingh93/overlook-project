@@ -1,3 +1,4 @@
+import { filterBookingsByUser } from './bookings';
 import {
   username,
   showGenericLoginError,
@@ -13,14 +14,14 @@ const convertFetchToJSON = url => {
 }
 
 const getAllBookings = () => {
-  return convertFetchToJSON(`http://localhost:3001/api/v1/bookings	`)
+  return convertFetchToJSON(`http://localhost:3001/api/v1/bookings`)
     .then(data => data.bookings);    
 }
 
 const setUserBookings = () => {
   getAllBookings()
     .then(bookings => {
-      userBookings = bookings.filter(booking => booking.userID.toString() === currentUser.id.toString())
+      userBookings = filterBookingsByUser(bookings, currentUser);
     })
 }
 

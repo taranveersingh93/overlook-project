@@ -61,6 +61,12 @@ body {
   overflow-x:hidden;
 }
 
+.inputs input {
+  border-radius: 7px;
+  border-color: rgba(30, 74, 120, 0.335);
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
 .input-container {
   max-width: 13vw;
   display: flex;
