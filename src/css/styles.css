@@ -9,14 +9,16 @@ body {
 }
 
 /* login */
-
-.login-view {
-  background-image: url('.././images/resort.jpg');
+.view {
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   width: 100%;
+}
+
+.login-view {
+  background-image: url('.././images/resort.jpg');
 }
 
 .login-container {
@@ -102,6 +104,86 @@ body {
 .active-login:hover {
   background-color: #81ecff;
   cursor: pointer;
+}
+
+/* Dashboard view */
+.dashboard-view {
+  background-image: url('.././images/resort-2.jpg');
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-nav {
+  background-color: rgba(255, 255, 255, 0.455);
+  height: 14%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-text-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+}
+.overlook-title {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.484);
+}
+
+.welcome-text {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.484);
+}
+
+.choose-booking {
+  display: flex;
+  width: 25vw;
+  height: 60%;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.3);
+  min-width: 230px
+}
+
+.bookings-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  width: 45%;
+  height: 40px;
+  border-radius: 25px;
+  border: solid 2px #ffffff00;
+}
+
+.selected-booking {
+  background-color: #ffffff;
+}
+
+.unselected-booking {
+  transition: 0.2s;
+}
+
+.unselected-booking:hover {
+  border: solid 2px #ffffff;
+  cursor: pointer;
+}
+
+/* Helper classes */
+.hidden {
+  display: none;
 }
 
 .invisible {
