@@ -43,7 +43,10 @@ const hideLoginError = () => {
 const submitUserData = () => {
   const userInput = usernameInput.value;
   password = passwordInput.value;
-  if (password === "overlook2021" && userInput.startsWith("customer")) {
+  const ID = Number(userInput.slice(8))
+  const IDcheck = ID > 0 && ID < 51 && userInput.startsWith("customer");
+  const passwordCheck = password === "overlook2021";
+  if (passwordCheck && IDcheck) {
     hideLoginError();
     username = usernameInput.value;
     getUser();

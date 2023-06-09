@@ -1,12 +1,17 @@
-import { checkIfUpcoming, filterBookingsByUser } from './bookings';
+import { filterBookingsByUser } from './bookings';
 import {
   username,
   showGenericLoginError,
   showLoginError,
 } from './domUpdates'
+import {
+  addPicture
+} from './rooms'
 
 let currentUser;
 let userBookings;
+let allRooms;
+let allBookings;
 
 const convertFetchToJSON = url => {
   return fetch(url).then(response => response.json());
@@ -14,14 +19,16 @@ const convertFetchToJSON = url => {
 
 const getAllBookings = () => {
   return convertFetchToJSON(`http://localhost:3001/api/v1/bookings`)
-    .then(data => data.bookings);    
+    .then(data => data.bookings); 
 }
 
 const setUserData = (user) => {
   currentUser = user;
+  getRooms();
   return getAllBookings()
     .then(bookings => {
-      userBookings = filterBookingsByUser(bookings, currentUser);
+      allBookings = bookings;
+      userBookings = filterBookingsByUser(allBookings, currentUser);      
     })
 }
 
@@ -46,6 +53,16 @@ const getUser = () => {
     .catch(err => {
       showGenericLoginError()
       console.error(err)
+    })
+}
+
+const getRooms = () => {
+  convertFetchToJSON('http://localhost:3001/api/v1/rooms')
+    .then(response => {
+      if (!response.message) {
+        const roomsInfo = response.rooms;
+        allRooms = roomsInfo.map(room => addPicture(room));
+      }
     })
 }
 

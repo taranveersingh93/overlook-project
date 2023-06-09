@@ -106,8 +106,8 @@ body {
   cursor: pointer;
 }
 
-/* Dashboard view */
-.dashboard-view {
+/* website view */
+.website-view {
   background-image: url('.././images/resort-2.jpg');
 }
 
@@ -120,7 +120,7 @@ body {
   align-items: center;
 }
 
-.dashboard-nav {
+.website-nav {
   background-color: rgba(255, 255, 255, 0.455);
   height: 14%;
   width: 100%;
@@ -138,15 +138,16 @@ body {
 }
 
 .title-container {
-  font-size: 24px;
+  font-size: 20px;
   color: rgba(0, 0, 0, 0.484);
-  width: 15%;
+  width: 14%;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
-.choose-booking {
+.toggle-container {
   display: flex;
   width: 25vw;
   height: 60%;
@@ -179,6 +180,17 @@ body {
 .unselected-booking:hover {
   border: solid 2px #ffffff;
   cursor: pointer;
+}
+
+/* Display area */
+.display-area {
+  width: 100%;
+  height: 85%;
+}
+  
+.main-view {
+  height: 100%;
+  width: 100%;
 }
 
 /* Helper classes */

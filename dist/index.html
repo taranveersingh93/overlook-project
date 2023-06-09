@@ -35,14 +35,14 @@
       </button>
     </form>
   </section>
-  <section class="dashboard-view view">
-    <div class="dashboard-overlay overlay">
-      <nav class="dashboard-nav">
+  <section class="website-view view">
+    <div class="website-overlay overlay">
+      <nav class="website-nav">
         <div class="nav-text-container">
           <div class="title-container">
             <h1 class="overlook-title">Overlook</h1>
           </div>
-          <section class="choose-booking">
+          <section class="choose-booking toggle-container">
             <section tabindex="0" role="button" class="bookings-button selected-booking" id="myBookings"> My Bookings </section>
             <section tabindex="0" role="button" class="bookings-button unselected-booking" id="newBookings">New Bookings</section>
           </section>
@@ -51,6 +51,11 @@
           </div>
         </div>
       </nav>
+      <main class="display-area">
+        <section class="list-bookings-view main-view">
+        </section>
+        <section class="new-bookings-view main-view hidden"></section>
+      </main>
     </div>
   </section>
   <script src="bundle.js"></script>

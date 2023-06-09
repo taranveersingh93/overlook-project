@@ -7,9 +7,12 @@ import {
   selectRadio
 } from './domUpdates';
 
-import {
-  checkForUser
-} from './apiCalls'
+import './images/junior-suite.jpg'
+import './images/residential-suite.jpg'
+import './images/single-room.jpg'
+import './images/suite.jpg'
+import './images/resort.jpg'
+import './images/resort-2.jpg'
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
