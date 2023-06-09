@@ -308,8 +308,8 @@ body {
 .card-info {
   position: absolute;
   top: 0;
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 90%;
   left: -100%;
   backdrop-filter: blur(9px);
   display: flex;
@@ -317,6 +317,7 @@ body {
   align-items: center;
   justify-content: center;
   transition: 1s;
+  border-radius: 6px;
 }
 
 .card-info p {

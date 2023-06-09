@@ -47,6 +47,11 @@ bookingListGrid.addEventListener("click", function(e) {
     displayBookingInfo(e.target.closest(".current-booking-card").id)
   }
 })
+bookingListGrid.addEventListener("keypress", function(e) {
+  if (e.target.closest(".current-booking-card") && e.key ==="Enter") {
+    displayBookingInfo(e.target.closest(".current-booking-card").id)
+  }
+})
 
 // Exports
 export {
