@@ -58,6 +58,11 @@ const selectRadio = (e) => {
   }
 }
 
+const showDashboard =(user) => {
+  
+}
+
+
 export {
   activateLoginBtn,
   username,
@@ -65,5 +70,6 @@ export {
   selectRadio,
   submitUserData,
   showGenericLoginError,
-  showLoginError
+  showLoginError,
+  showDashboard
 }

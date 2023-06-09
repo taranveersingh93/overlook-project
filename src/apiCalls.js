@@ -1,19 +1,37 @@
 import {
   username,
   showGenericLoginError,
-  showLoginError
+  showLoginError,
+  showDashboard
 } from './domUpdates'
 
 let currentUser;
+let userBookings;
+
+const convertFetchToJSON = url => {
+  return fetch(url).then(response => response.json());
+}
+
+const getAllBookings = () => {
+  return convertFetchToJSON(`http://localhost:3001/api/v1/bookings	`)
+    .then(data => data.bookings);    
+}
+
+const setUserBookings = () => {
+  getAllBookings()
+    .then(bookings => {
+      userBookings = bookings.filter(booking => booking.userID.toString() === currentUser.id.toString())
+    })
+}
 
 const getUser = () => {
   const queryID = username.slice(8);
-  fetch(`http://localhost:3001/api/v1/customers/${queryID}`)
-    .then(response => response.json())
+  convertFetchToJSON(`http://localhost:3001/api/v1/customers/${queryID}`)
     .then(data => {
       if (!data.message) {
-        currentUser = data
-        console.log(currentUser)
+        currentUser = data;
+        setUserBookings();
+        showDashboard(currentUser);
       } else {
         console.log(data.message)
         showLoginError();
