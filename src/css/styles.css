@@ -277,7 +277,7 @@ body {
   align-items: center;
 }
 
-.booking-card {
+.current-booking-card {
   margin-top: 12px;
   width: 90%;
   height: 25vh;
@@ -296,7 +296,7 @@ body {
   position: relative;
 }
 
-.booking-card-img {
+.current-booking-card-img {
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -310,40 +310,44 @@ body {
   top: 0;
   height: 100%;
   width: 100%;
-  z-index: -1;
+  left: -100%;
   backdrop-filter: blur(9px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   transition: 1s;
 }
 
 .card-info p {
-  margin-top: 1px;
+  margin-top: 2px;
   margin-bottom: 0;
   font-size: 1.02em;
 }
 
 .display-info {
-  z-index: 1;
+  left: 0;
 }
 
-.booking-card:hover .booking-card-img {
-  transform: scale(1.2);
-}
-
-.booking-card:hover {
+.display-info:hover {
   cursor: pointer;
 }
 
-.booking-card-text {
+.current-booking-card:hover .current-booking-card-img {
+  transform: scale(1.2);
+}
+
+.current-booking-card:hover {
+  cursor: pointer;
+}
+
+.current-booking-card-text {
   display: flex;
   width: 90%;
   justify-content: space-between;
 }
 
-.booking-card-text p {
+.current-booking-card-text p {
   margin: 0;
 }
 

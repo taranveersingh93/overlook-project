@@ -4,7 +4,8 @@ import './css/styles.css';
 import {
   activateLoginBtn,
   submitUserData,
-  selectRadio
+  selectRadio,
+  displayBookingInfo
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -40,6 +41,11 @@ radioButtons.forEach(button => {
   button.addEventListener("keydown", function(e) {
     selectRadio(e);
   })
+})
+bookingListGrid.addEventListener("click", function(e) {
+  if (e.target.closest(".current-booking-card")) {
+    displayBookingInfo(e.target.closest(".current-booking-card").id)
+  }
 })
 
 // Exports

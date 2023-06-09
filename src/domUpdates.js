@@ -93,7 +93,8 @@ const makeBookingsColumnData = bookings => {
       numBeds: room.numBeds,
       bedSize: room.bedSize,
       roomType: room.roomType,
-      picture: room.picture
+      picture: room.picture,
+      id: booking.id
     }
   })
 
@@ -110,17 +111,17 @@ const makeBookingsColumnData = bookings => {
 const createSingleBookingHtml = booking => {
   let htmlCode = '';
   htmlCode += `
-  <div class="booking-card" tabindex="0" role="button">
+  <div class="current-booking-card" tabindex="0" role="button" id="${booking.id}">
     <div class="card-img-container">
-      <img class="booking-card-img" src="${booking.picture}">
+      <img class="current-booking-card-img" src="${booking.picture}">
       <section class="card-info">
         <p>Room type: ${booking.roomType}</p>
         <p>Bed size: ${booking.bedSize}</p>
         <p>Number of beds: ${booking.numBeds}</p>
-        <p>Cost: ${booking.cost}</p>
+        <p>Cost: $${booking.cost}</p>
       </section>
     </div>
-    <section class="booking-card-text">
+    <section class="current-booking-card-text">
       <p class="card-room-text">Room ${booking.roomNumber}</p>
       <p class="card-date-text">Date: ${booking.date}</p>
     </section>
@@ -167,6 +168,10 @@ const showDashboard = (data) => {
   renderDashboard(data);
 }
 
+const displayBookingInfo = cardID => {
+  document.getElementById(cardID).querySelector(".card-info").classList.toggle("display-info");
+}
+
 export {
   activateLoginBtn,
   username,
@@ -176,4 +181,5 @@ export {
   showGenericLoginError,
   showLoginError,
   showDashboard,
+  displayBookingInfo
 }

@@ -9,7 +9,7 @@ const checkIfUpcoming = (booking, currentDate) => {
   return refinedDate > currentDate;
 }  
 
-const calculateCost = (rooms, bookings) =>  bookings.reduce((total, booking) => total + findRoomFromBooking(rooms, booking).costPerNight, 0)
+const calculateCost = (rooms, bookings) =>  Math.floor(bookings.reduce((total, booking) => total + findRoomFromBooking(rooms, booking).costPerNight, 0));
 
 export {
   filterBookingsByUser,
