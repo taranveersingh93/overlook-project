@@ -16,6 +16,12 @@ import {
 } from './scripts'
 
 import {
+  openCalendar,
+  closeCalendar,
+  refreshCalendar
+} from './datePicker'
+
+import {
   showElement,
   hideElement,
   generateCurrentDate,
@@ -253,6 +259,22 @@ const changeCurrentBookingsView = viewID => {
   toggleCurrentBookingButtons(viewID);
 }
 
+const actOnSearchIcon = (element) => {
+  const map = {
+    calendar: () => openCalendar(),
+    calendarIcon: () => openCalendar(),
+    refreshIcon: () => refreshCalendar(),
+    crossIcon: () => closeCalendar()
+  };
+  console.log(element)
+  if (element.classList.contains("search-room")) {
+    console.log(document.querySelector('#calendar').value)
+  } else if (element.id && element.classList) {
+    
+   map[element.id]();
+  }
+}
+
 export {
   activateLoginBtn,
   username,
@@ -264,5 +286,6 @@ export {
   showDashboard,
   displayBookingInfo,
   changeCurrentBookingsView,
-  switchBookingView
+  switchBookingView,
+  actOnSearchIcon
 }

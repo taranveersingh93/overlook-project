@@ -7,12 +7,9 @@ import {
   selectRadio,
   displayBookingInfo,
   changeCurrentBookingsView,
-  switchBookingView
+  switchBookingView,
+  actOnSearchIcon
 } from './domUpdates';
-
-import {
-  openCalendar
-} from './datePicker'
 
 import './images/junior-suite.jpg'
 import './images/residential-suite.jpg'
@@ -43,6 +40,7 @@ const bookingListGrid = document.querySelector('.booking-list-grid');
 const chooseBookingList = document.querySelector('.choose-booking-list');
 const chooseBookingContainer = document.querySelector('.choose-booking');
 const calendarIcon = document.querySelector('#calendarIcon');
+const roomSearchContainer = document.querySelector('#roomSearchContainer');
 
 
 // Event listeners
@@ -87,7 +85,10 @@ chooseBookingContainer.addEventListener("keypress", function(e) {
     switchBookingView(e.target.id);
   }
 })
-calendarIcon.addEventListener("click", openCalendar);
+roomSearchContainer.addEventListener("click", function(e) {
+  e.preventDefault()
+  actOnSearchIcon(e.target)
+})
 
 // Exports
 export {
