@@ -188,9 +188,6 @@ const showDashboard = (data) => {
   renderDashboard(data);
 }
 
-const goToNewBookings = () => {
-
-}
 const flipViews = views => {
   views.forEach(view => {
     view.classList.toggle('hidden');
