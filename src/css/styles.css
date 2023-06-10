@@ -4,8 +4,16 @@ html {
   height: 100%;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   margin: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* login */
@@ -133,7 +141,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 95%;
   height: 100%;
 }
 
