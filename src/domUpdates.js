@@ -268,9 +268,8 @@ const actOnSearchIcon = (element) => {
   };
   console.log(element)
   if (element.classList.contains("search-room")) {
-    console.log(document.querySelector('#calendar').value)
+    const dateSelected = document.querySelector('#calendar').value;
   } else if (element.id && element.classList) {
-    
    map[element.id]();
   }
 }

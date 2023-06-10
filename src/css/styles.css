@@ -431,7 +431,7 @@ body::-webkit-scrollbar {
 .icon:hover {
   cursor: pointer;
   opacity: 1;
-  transform: translateY(-1px);
+  transform: translateY(-3px);
 }
 
 /* Helper classes */
