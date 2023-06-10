@@ -176,8 +176,8 @@ const renderTotal = bookings => {
 }
 
 const renderName = name => {
-  const username = document.querySelector('.welcome-text');
-  username.innerText = `Welcome ${name}`;
+  const username = document.querySelector('.user-name');
+  username.innerText = `${name}`;
 }
 
 const renderDashboard = data => {
