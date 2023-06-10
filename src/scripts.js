@@ -5,7 +5,8 @@ import {
   activateLoginBtn,
   submitUserData,
   selectRadio,
-  displayBookingInfo
+  displayBookingInfo,
+  changeCurrentBookingsView
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -29,6 +30,7 @@ const loginFeedback = document.querySelector('.login-feedback');
 const loginView = document.querySelector('.login-view');
 const websiteView = document.querySelector('.website-view');
 const bookingListGrid = document.querySelector('.booking-list-grid');
+const chooseBookingList = document.querySelector('.choose-booking-list');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -41,15 +43,20 @@ radioButtons.forEach(button => {
   button.addEventListener("keydown", function(e) {
     selectRadio(e);
   })
-})
+});
 bookingListGrid.addEventListener("click", function(e) {
   if (e.target.closest(".current-booking-card")) {
     displayBookingInfo(e.target.closest(".current-booking-card").id)
   }
-})
+});
 bookingListGrid.addEventListener("keypress", function(e) {
   if (e.target.closest(".current-booking-card") && e.key ==="Enter") {
     displayBookingInfo(e.target.closest(".current-booking-card").id)
+  }
+});
+chooseBookingList.addEventListener("click", function(e) {
+  if (e.target.classList.contains("list-button") && e.target.classList.contains("unselected-button")) {
+    changeCurrentBookingsView(e.target.id);
   }
 })
 

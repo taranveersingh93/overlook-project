@@ -17,10 +17,11 @@ import {
 
 import {
   showElement,
-  hideElement
+  hideElement,
+  generateCurrentDate
 } from './helperFunctions'
 import { findRoomFromBooking } from './rooms';
-import {calculateCost} from './bookings'
+import {calculateCost, setBookingsOfInterest} from './bookings'
 let username;
 let password;
 
@@ -172,6 +173,26 @@ const displayBookingInfo = cardID => {
   document.getElementById(cardID).querySelector(".card-info").classList.toggle("display-info");
 }
 
+const toggleCurrentBookingButtons = viewID => {
+  const allButtons = document.querySelectorAll('.list-button');
+  allButtons.forEach(button => {
+    button.classList.remove("selected-button");
+    button.classList.add("unselected-button");
+  });
+  document.getElementById(viewID).classList.add("selected-button");
+  document.getElementById(viewID).classList.remove("unselected-button")
+}
+
+const filterCurrentBookings = viewID => {
+  pageData.bookingsOfInterest = setBookingsOfInterest(viewID, pageData.userBookings, generateCurrentDate());
+  renderDashboard(pageData);
+}
+
+const changeCurrentBookingsView = viewID => {
+  filterCurrentBookings(viewID);
+  toggleCurrentBookingButtons(viewID);
+}
+
 export {
   activateLoginBtn,
   username,
@@ -181,5 +202,6 @@ export {
   showGenericLoginError,
   showLoginError,
   showDashboard,
-  displayBookingInfo
+  displayBookingInfo,
+  changeCurrentBookingsView
 }
