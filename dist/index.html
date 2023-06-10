@@ -7,7 +7,7 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <section class="login-view">
+  <section class="login-view view">
     <form class="login-container">
       <div class="option-container">
         <section class="individual-option customer">
@@ -35,7 +35,68 @@
       </button>
     </form>
   </section>
-
+  <section class="website-view view hidden">
+    <div class="website-overlay overlay">
+      <nav class="website-nav">
+        <div class="nav-text-container">
+          <div class="title-container">
+            <h1 class="overlook-title">Overlook</h1>
+          </div>
+          <section class="choose-booking toggle-container">
+            <section tabindex="0" role="button" class="bookings-button selected-booking" id="myBookings"> My Bookings </section>
+            <section tabindex="0" role="button" class="bookings-button unselected-booking" id="newBookings">New Bookings</section>
+          </section>
+          <div class="title-container">
+            <h1 class="welcome-text"> Welcome user</h1>
+          </div>
+        </div>
+      </nav>
+      <main class="display-area">
+        <section class="list-bookings-view main-view">
+          <section class="choose-booking-list">
+            <div class="booking-choice-container">
+              <section tabindex="0" role="button" class="all-bookings-button list-button selected-button" id="allBookings">
+                All Bookings
+              </section>
+            </div>
+            <div class="booking-choice-container">
+              <section tabindex="0" role="button" class="past-bookings-button list-button unselected-button" id="pastBookings">
+                Past Bookings
+              </section>
+            </div>
+            <div class="booking-choice-container">
+              <section tabindex="0" role="button" class="upcoming-bookings-button list-button unselected-button" id="upcomingBookings">
+                Upcoming Bookings
+              </section>
+            </div>
+          </section>
+          <section class="cost-container">
+            <h1 class="total-spend">Total spend:   $<span class="amount">0</span></h1>
+          </section>
+          <div class="booking-list-grid">
+            <!-- <div class="booking-column">
+              <div class="booking-card" tabindex="0" role="button">
+                <div class="card-img-container">
+                  <img class="booking-card-img" src="./images/junior-suite.jpg">
+                  <section class="card-info">
+                    <p>Room type: single room</p>
+                    <p>Bed size: queen</p>
+                    <p>Number of beds: 2</p>
+                    <p>Cost: 100$</p>
+                  </section>
+                </div>
+                <section class="booking-card-text">
+                  <p class="card-room-text">Room 12</p>
+                  <p class="card-date-text">Date: 2023/01/01</p>
+                </section>
+              </div>
+            </div> -->
+          </div>
+        </section>
+        <section class="new-bookings-view main-view hidden"></section>
+      </main>
+    </div>
+  </section>
   <script src="bundle.js"></script>
 </body>
 </html>
