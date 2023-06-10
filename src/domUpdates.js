@@ -149,18 +149,29 @@ const createGridHTML = allColumns => {
   return htmlCode;
 }
 
-const renderDashboard = data => {
-  const gridData = makeBookingsColumnData(data.bookingsOfInterest);
-  renderTotal(data.bookingsOfInterest);
-  bookingListGrid.innerHTML = '';
-  bookingListGrid.innerHTML = createGridHTML(gridData);
+const renderTotal = bookings => {
+  const totalElement = document.querySelector('.amount');
+  totalElement.innerText = 0;
+  const speed = 200;
+  const animateCount = () => {
+    const target = calculateCost(pageData.allRooms, bookings);
+    const count = Number(totalElement.innerText);
+    const increment = Math.floor(target/speed);
+    if (count < target) {
+      totalElement.innerText = count + increment;
+      setTimeout(animateCount, 1);
+    } else {
+      totalElement.innerText = target;
+    }
+  }
+  animateCount();
 }
 
-const renderTotal = bookings => {
-  console.log(bookings)
-  const totalElement = document.querySelector('.amount');
-  const total = calculateCost(pageData.allRooms, bookings);
-  totalElement.innerText = total;
+const renderDashboard = data => {
+  const gridData = makeBookingsColumnData(data.bookingsOfInterest);
+  bookingListGrid.innerHTML = '';
+  bookingListGrid.innerHTML = createGridHTML(gridData);
+  renderTotal(data.bookingsOfInterest);
 }
 
 const showDashboard = (data) => {
