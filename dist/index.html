@@ -5,9 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webpack Starter Kit</title>
+  <style>
+    @import url("https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css");
+  </style>
 </head>
 <body>
-  <section class="login-view view">
+  <section class="login-view view hidden">
     <form class="login-container">
       <div class="option-container">
         <section class="individual-option customer">
@@ -35,7 +38,7 @@
       </button>
     </form>
   </section>
-  <section class="website-view view hidden">
+  <section class="website-view view">
     <div class="website-overlay overlay">
       <nav class="website-nav">
         <div class="nav-text-container">
@@ -95,7 +98,9 @@
           </div>
         </section>
         <section class="new-bookings-view main-view hidden">
-          <section id="calendar"></section>
+          <section id="date-container">
+            <input type="text" id="calendar" placeholder="Pick a date">
+          </section>
         </section>
       </main>
     </div>

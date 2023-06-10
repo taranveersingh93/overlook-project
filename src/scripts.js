@@ -10,6 +10,10 @@ import {
   switchBookingView
 } from './domUpdates';
 
+import {
+  openCalendar
+} from './datePicker'
+
 import './images/junior-suite.jpg'
 import './images/residential-suite.jpg'
 import './images/single-room.jpg'
@@ -17,6 +21,7 @@ import './images/suite.jpg'
 import './images/resort.jpg'
 import './images/resort-2.jpg'
 import './images/resort-3.jpg'
+
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
@@ -34,6 +39,7 @@ const websiteView = document.querySelector('.website-view');
 const bookingListGrid = document.querySelector('.booking-list-grid');
 const chooseBookingList = document.querySelector('.choose-booking-list');
 const chooseBookingContainer = document.querySelector('.choose-booking');
+
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -68,11 +74,16 @@ chooseBookingList.addEventListener("keypress", function(e) {
   }
 })
 chooseBookingContainer.addEventListener("click", function(e) {
-  console.log(e.target)
   if (e.target.classList.contains("bookings-button")) {
     switchBookingView(e.target.id)
   }
 })
+chooseBookingContainer.addEventListener("keypress", function(e) {
+  if (e.target.classList.contains("bookings-button") && e.key === "Enter") {
+    switchBookingView(e.target.id);
+  }
+})
+calendar.addEventListener("click", openCalendar);
 
 // Exports
 export {
@@ -84,5 +95,6 @@ export {
   loginFeedback,
   loginView,
   websiteView,
-  bookingListGrid
+  bookingListGrid,
+
 }

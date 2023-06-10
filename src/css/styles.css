@@ -382,6 +382,25 @@ body::-webkit-scrollbar {
   color: red;
 }
 
+/* New bookings */
+#date-container {
+  margin-top: 20px;
+  height: 9%;
+  width: 35%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.477);
+  border-radius: 20px;
+}
+
+#calendar {
+  height: 35%;
+  width: 100px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.521);
+}
+
 /* Helper classes */
 .hidden {
   display: none;

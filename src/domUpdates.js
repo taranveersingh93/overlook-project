@@ -222,11 +222,11 @@ const switchBookingView = clickedView => {
   flipViews(mainViews)
   toggleViewButtons(bookingButtons);
   changeBackground(clickedView);
-  const map = {
-    "myBookings": loadMyBookings(pageData.currentUser),
-    "newBookings": loadNewBookings()
-  }
-  map[clickedView]();
+  // const map = {
+  //   "myBookings": loadMyBookings(pageData.currentUser),
+  //   "newBookings": loadNewBookings()
+  // }
+  // map[clickedView]();
 }
 
 const displayBookingInfo = cardID => {
