@@ -21,7 +21,7 @@ import {
   generateCurrentDate
 } from './helperFunctions'
 import { findRoomFromBooking } from './rooms';
-import {calculateCost, setBookingsOfInterest} from './bookings'
+import {calculateCost, checkIfUpcoming, setBookingsOfInterest} from './bookings'
 let username;
 let password;
 
@@ -96,7 +96,8 @@ const makeBookingsColumnData = bookings => {
       bedSize: room.bedSize,
       roomType: room.roomType,
       picture: room.picture,
-      id: booking.id
+      id: booking.id,
+      isUpcoming: checkIfUpcoming(booking, generateCurrentDate())
     }
   })
 
@@ -111,6 +112,10 @@ const makeBookingsColumnData = bookings => {
 }
 
 const createSingleBookingHtml = booking => {
+  let extraClass = "past-booking";
+  if (booking.isUpcoming) {
+    extraClass = "upcoming-booking";
+  }
   let htmlCode = '';
   htmlCode += `
   <div class="current-booking-card" tabindex="0" role="button" id="${booking.id}">
@@ -125,7 +130,7 @@ const createSingleBookingHtml = booking => {
     </div>
     <section class="current-booking-card-text">
       <p class="card-room-text">Room ${booking.roomNumber}</p>
-      <p class="card-date-text">Date: ${booking.date}</p>
+      <p class="card-date-text ${extraClass}">Date: ${booking.date}</p>
     </section>
   </div>
   `;

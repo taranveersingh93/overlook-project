@@ -243,7 +243,7 @@ body {
 }
 
 .cost-container {
-  height: 8%;
+  height: 13%;
   width: 20%;
   display: flex;
   justify-content: center;
@@ -254,8 +254,10 @@ body {
   border-radius: 12px;
 }
 
-.cost-container h1 {
-  margin:0
+.total-spend {
+  margin:0;
+  opacity: 0.85;
+  font-size: 1.2em
 }
 
 /* Booking list grid */
@@ -324,6 +326,7 @@ body {
   margin-top: 2px;
   margin-bottom: 0;
   font-size: 1.02em;
+  opacity: 0.6;
 }
 
 .display-info {
@@ -335,7 +338,7 @@ body {
 }
 
 .current-booking-card:hover .current-booking-card-img {
-  transform: scale(1.2);
+  transform: scale(1.03);
 }
 
 .current-booking-card:hover {
@@ -349,7 +352,16 @@ body {
 }
 
 .current-booking-card-text p {
+  opacity: 0.8;
   margin: 0;
+}
+
+.upcoming-booking {
+  color: green;
+}
+
+.past-booking {
+  color: red;
 }
 
 /* Helper classes */
