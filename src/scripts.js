@@ -21,7 +21,10 @@ import './images/suite.jpg'
 import './images/resort.jpg'
 import './images/resort-2.jpg'
 import './images/resort-3.jpg'
-
+import './images/calendar.png'
+import './images/refresh.png'
+import './images/search.png'
+import './images/cross.png'
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
@@ -39,6 +42,7 @@ const websiteView = document.querySelector('.website-view');
 const bookingListGrid = document.querySelector('.booking-list-grid');
 const chooseBookingList = document.querySelector('.choose-booking-list');
 const chooseBookingContainer = document.querySelector('.choose-booking');
+const calendarIcon = document.querySelector('#calendarIcon');
 
 
 // Event listeners
@@ -83,7 +87,7 @@ chooseBookingContainer.addEventListener("keypress", function(e) {
     switchBookingView(e.target.id);
   }
 })
-calendar.addEventListener("click", openCalendar);
+calendarIcon.addEventListener("click", openCalendar);
 
 // Exports
 export {
@@ -96,5 +100,4 @@ export {
   loginView,
   websiteView,
   bookingListGrid,
-
 }

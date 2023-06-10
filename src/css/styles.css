@@ -383,22 +383,45 @@ body::-webkit-scrollbar {
 }
 
 /* New bookings */
-#date-container {
+#room-search-container {
   margin-top: 20px;
   height: 9%;
   width: 35%;
+  min-width: 250px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.477);
   border-radius: 20px;
 }
 
+.date-container {
+  display: flex;
+  width: 65%;
+  height: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 #calendar {
   height: 35%;
-  width: 100px;
+  width: 55%;
   text-align: center;
-  color: rgba(255, 255, 255, 0.521);
+  color: rgba(0, 0, 0, 0.479);
+}
+
+.icon {
+  min-width: 25px;
+  min-height: 25px;
+  max-height: 40%;
+  transition: 0.4s;
+  opacity: 0.6;
+}
+
+.icon:hover {
+  cursor: pointer;
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 /* Helper classes */
