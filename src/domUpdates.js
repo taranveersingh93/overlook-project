@@ -13,22 +13,33 @@ import {
   loginView,
   websiteView,
   bookingListGrid
-} from './scripts'
+} from './scripts';
 
 import {
   openCalendar,
   closeCalendar,
   refreshCalendar
-} from './datePicker'
+} from './datePicker';
 
 import {
   showElement,
   hideElement,
   generateCurrentDate,
   correctCase
-} from './helperFunctions'
-import { findRoomFromBooking } from './rooms';
-import {calculateCost, checkIfUpcoming, setBookingsOfInterest} from './bookings'
+} from './helperFunctions';
+
+import { 
+  findAvailableRooms,
+  findRoomFromBooking,
+} from './rooms';
+
+import {
+  calculateCost,
+  checkIfUpcoming,
+  setBookingsOfInterest,
+  filterBookingsByDate
+} from './bookings';
+
 let username;
 let password;
 
@@ -266,11 +277,13 @@ const actOnSearchIcon = (element) => {
     refreshIcon: () => refreshCalendar(),
     crossIcon: () => closeCalendar()
   };
-  console.log(element)
-  if (element.classList.contains("search-room")) {
-    const dateSelected = document.querySelector('#calendar').value;
-  } else if (element.id && element.classList) {
-   map[element.id]();
+
+  const dateSelected = document.querySelector('#calendar').value;
+  if (element.id === "searchIcon" && dateSelected) {
+    const existingBookings = filterBookingsByDate(pageData.allBookings, dateSelected);
+    const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings)
+  } else if (element.id && element.classList && map[element.id]) {
+    map[element.id]();
   }
 }
 

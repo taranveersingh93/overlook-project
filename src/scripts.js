@@ -86,8 +86,12 @@ chooseBookingContainer.addEventListener("keypress", function(e) {
   }
 })
 roomSearchContainer.addEventListener("click", function(e) {
-  e.preventDefault()
-  actOnSearchIcon(e.target)
+  actOnSearchIcon(e.target);
+})
+roomSearchContainer.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    actOnSearchIcon(e.target);
+  }
 })
 
 // Exports

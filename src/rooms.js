@@ -13,10 +13,25 @@ const addPicture = room => {
 }
 
 const findRoomFromBooking = (rooms, booking) => {
-  return rooms.find(room => room.number === booking.roomNumber)
+  return rooms.find(room => room.number === booking.roomNumber);
 } 
+
+const getUniqueRoomsFromBookings = bookings => {
+  const rooms = bookings.map(booking => booking.roomNumber.toString());
+  const uniqueRooms = [...new Set(rooms)];
+  return uniqueRooms;
+}
+
+const findAvailableRooms = (allRooms, bookings) => {
+  
+  const unavailableRooms = getUniqueRoomsFromBookings(bookings).map(room => room.toString());
+  const availableRooms = allRooms.filter(room => !unavailableRooms.includes(room.number.toString()));
+  return availableRooms;
+}
 
 export {
   addPicture,
-  findRoomFromBooking
+  findRoomFromBooking,
+  getUniqueRoomsFromBookings,
+  findAvailableRooms
 }

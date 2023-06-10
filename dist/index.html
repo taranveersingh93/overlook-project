@@ -10,7 +10,7 @@
   </style>
 </head>
 <body>
-  <section class="login-view view hidden">
+  <section class="login-view view">
     <form class="login-container">
       <div class="option-container">
         <section class="individual-option customer">
@@ -38,7 +38,7 @@
       </button>
     </form>
   </section>
-  <section class="website-view view">
+  <section class="website-view view hidden">
     <div class="website-overlay overlay">
       <nav class="website-nav">
         <div class="nav-text-container">
@@ -98,17 +98,15 @@
           </div>
         </section>
         <section class="new-bookings-view main-view hidden">
-          <form id="roomSearchContainer">
+          <section id="roomSearchContainer">
             <div class="date-container">
               <img class="icon" id="calendarIcon" tabindex="0" role="button" src="./images/calendar.png"> 
               <input type="text" id="calendar" class="calender-input" placeholder="Pick a date">
               <img class="icon" id="refreshIcon" tabindex="0" role="button" src="./images/refresh.png">
               <img class="icon" id="crossIcon" tabindex="0" role="button" src="./images/cross.png">
             </div>
-            <button class="search-room search-btn-container" type="submit">
-              <img class="icon search-room" id="searchIcon" src="./images/search.png">
-            </button>
-          </form>
+            <img class="icon search-room" tabindex="0" role="button" id="searchIcon" src="./images/search.png">
+          </section>
         </section>
       </main>
     </div>

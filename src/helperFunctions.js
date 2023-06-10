@@ -12,7 +12,7 @@ const generateCurrentDate = () => {
   if (date < 10) {
     date = `0${date.toString()}`;
   } else {
-    date = month.toString();
+    date = date.toString();
   }
   const fullDate = Number(year+month+date);
   return fullDate;
@@ -32,9 +32,19 @@ const correctCase = phrase => {
   return newWords.join(" ");
 }
 
+const formatDate = date => {
+  const inputDate = date.toString();
+  const year = inputDate.slice(0,4);
+  const month = inputDate.slice(5,7);
+  const newDate = inputDate.slice(8);
+  const usableDate = year+month+newDate;
+  return usableDate;
+}
+
 export {
   generateCurrentDate,
   hideElement,
   showElement,
-  correctCase
+  correctCase,
+  formatDate
 }
