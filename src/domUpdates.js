@@ -188,6 +188,44 @@ const showDashboard = (data) => {
   renderDashboard(data);
 }
 
+const goToNewBookings = () => {
+
+}
+const flipViews = views => {
+  views.forEach(view => {
+    view.classList.toggle('hidden');
+  });
+}
+
+const toggleViewButtons = buttons => {
+  buttons.forEach(button => {
+    button.classList.toggle('selected-booking');
+    button.classList.toggle('unselected-booking')
+  })
+}
+
+const changeBackground = view => {
+  const map = {
+    "myBookings": "url('.././images/resort-2.jpg')",
+    "newBookings": "url('.././images/resort-3.jpg')"
+  }
+  const websiteView = document.querySelector('.website-view');
+  websiteView.style.backgroundImage = map[view];
+}
+
+const switchBookingView = clickedView => {
+  const mainViews = document.querySelectorAll('.main-view');
+  const bookingButtons = document.querySelectorAll('.bookings-button');
+  flipViews(mainViews)
+  toggleViewButtons(bookingButtons);
+  changeBackground(clickedView);
+  const map = {
+    "myBookings": loadMyBookings(pageData.currentUser),
+    "newBookings": loadNewBookings()
+  }
+  map[clickedView]();
+}
+
 const displayBookingInfo = cardID => {
   document.getElementById(cardID).querySelector(".card-info").classList.toggle("display-info");
 }
@@ -222,5 +260,6 @@ export {
   showLoginError,
   showDashboard,
   displayBookingInfo,
-  changeCurrentBookingsView
+  changeCurrentBookingsView,
+  switchBookingView
 }

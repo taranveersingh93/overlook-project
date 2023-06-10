@@ -6,7 +6,8 @@ import {
   submitUserData,
   selectRadio,
   displayBookingInfo,
-  changeCurrentBookingsView
+  changeCurrentBookingsView,
+  switchBookingView
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -15,6 +16,7 @@ import './images/single-room.jpg'
 import './images/suite.jpg'
 import './images/resort.jpg'
 import './images/resort-2.jpg'
+import './images/resort-3.jpg'
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
@@ -31,6 +33,7 @@ const loginView = document.querySelector('.login-view');
 const websiteView = document.querySelector('.website-view');
 const bookingListGrid = document.querySelector('.booking-list-grid');
 const chooseBookingList = document.querySelector('.choose-booking-list');
+const chooseBookingContainer = document.querySelector('.choose-booking');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -62,6 +65,12 @@ chooseBookingList.addEventListener("click", function(e) {
 chooseBookingList.addEventListener("keypress", function(e) {
   if (e.target.classList.contains("list-button") && e.target.classList.contains("unselected-button") && e.key === "Enter") {
     changeCurrentBookingsView(e.target.id);
+  }
+})
+chooseBookingContainer.addEventListener("click", function(e) {
+  console.log(e.target)
+  if (e.target.classList.contains("bookings-button")) {
+    switchBookingView(e.target.id)
   }
 })
 
