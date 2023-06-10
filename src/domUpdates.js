@@ -25,6 +25,7 @@ import {calculateCost, setBookingsOfInterest} from './bookings'
 let username;
 let password;
 
+let timerID; 
 const activateLoginBtn = () => {
   const userTypeSelected = customerLoginRadio.checked || managerLoginRadio.checked;
   const userInputEntered = usernameInput.value && passwordInput.value;
@@ -150,16 +151,17 @@ const createGridHTML = allColumns => {
 }
 
 const renderTotal = bookings => {
+  clearTimeout(timerID);
   const totalElement = document.querySelector('.amount');
   totalElement.innerText = 0;
   const speed = 200;
+  const target = calculateCost(pageData.allRooms, bookings);
   const animateCount = () => {
-    const target = calculateCost(pageData.allRooms, bookings);
     const count = Number(totalElement.innerText);
     const increment = Math.floor(target/speed);
     if (count < target) {
       totalElement.innerText = count + increment;
-      setTimeout(animateCount, 1);
+      timerID = setTimeout(animateCount, 1);
     } else {
       totalElement.innerText = target;
     }
