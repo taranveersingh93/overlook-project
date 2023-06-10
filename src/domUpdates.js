@@ -167,10 +167,16 @@ const renderTotal = bookings => {
   animateCount();
 }
 
+const renderName = name => {
+  const username = document.querySelector('.welcome-text');
+  username.innerText = `Welcome ${name}`;
+}
+
 const renderDashboard = data => {
   const gridData = makeBookingsColumnData(data.bookingsOfInterest);
   bookingListGrid.innerHTML = '';
   bookingListGrid.innerHTML = createGridHTML(gridData);
+  renderName(data.currentUser.name);
   renderTotal(data.bookingsOfInterest);
 }
 
