@@ -59,6 +59,11 @@ chooseBookingList.addEventListener("click", function(e) {
     changeCurrentBookingsView(e.target.id);
   }
 })
+chooseBookingList.addEventListener("keypress", function(e) {
+  if (e.target.classList.contains("list-button") && e.target.classList.contains("unselected-button") && e.key === "Enter") {
+    changeCurrentBookingsView(e.target.id);
+  }
+})
 
 // Exports
 export {
