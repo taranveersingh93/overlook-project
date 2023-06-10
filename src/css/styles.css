@@ -10,7 +10,7 @@ body {
 
 /* login */
 .view {
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -356,7 +356,7 @@ body {
 }
 
 .current-booking-card-text p {
-  opacity: 0.8;
+  opacity: 0.95;
   margin: 0;
 }
 
