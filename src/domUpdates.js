@@ -18,7 +18,8 @@ import {
 import {
   showElement,
   hideElement,
-  generateCurrentDate
+  generateCurrentDate,
+  correctCase
 } from './helperFunctions'
 import { findRoomFromBooking } from './rooms';
 import {calculateCost, checkIfUpcoming, setBookingsOfInterest} from './bookings'
@@ -93,8 +94,8 @@ const makeBookingsColumnData = bookings => {
       roomNumber: booking.roomNumber,
       cost: room.costPerNight,
       numBeds: room.numBeds,
-      bedSize: room.bedSize,
-      roomType: room.roomType,
+      bedSize: correctCase(room.bedSize),
+      roomType: correctCase(room.roomType),
       picture: room.picture,
       id: booking.id,
       isUpcoming: checkIfUpcoming(booking, generateCurrentDate())
@@ -122,9 +123,9 @@ const createSingleBookingHtml = booking => {
     <div class="card-img-container">
       <img class="current-booking-card-img" src="${booking.picture}">
       <section class="card-info">
-        <p>Room type: ${booking.roomType}</p>
-        <p>Bed size: ${booking.bedSize}</p>
-        <p>Number of beds: ${booking.numBeds}</p>
+        <p>Room Type: ${booking.roomType}</p>
+        <p>Bed Size: ${booking.bedSize}</p>
+        <p>Number of Beds: ${booking.numBeds}</p>
         <p>Cost: $${booking.cost}</p>
       </section>
     </div>

@@ -270,6 +270,10 @@ body {
   overflow-y: scroll;
 }
 
+.booking-list-grid::-webkit-scrollbar {
+  display: none;
+}
+
 .booking-column {
   width: 20%;
   min-width: 300px;

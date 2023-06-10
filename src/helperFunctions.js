@@ -26,8 +26,15 @@ const showElement = element => {
   element.classList.remove('hidden');
 }
 
+const correctCase = phrase => {
+  const words = phrase.split(" ");
+  const newWords = words.map(word => word[0].toUpperCase() + word.slice(1))
+  return newWords.join(" ");
+}
+
 export {
   generateCurrentDate,
   hideElement,
-  showElement
+  showElement,
+  correctCase
 }
