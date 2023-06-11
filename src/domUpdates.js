@@ -187,20 +187,26 @@ const createSingleBookingHtml = booking => {
   return htmlCode
 }
 
-const createColumnHTML = column => {
+const createColumnHTML = (column, request) => {
   let htmlCode = '';
   htmlCode += '<div class="booking-column">'
-  column.forEach(booking => {
-    htmlCode += createSingleBookingHtml(booking);
+  const map = {
+    booking: (booking) => createSingleBookingHtml(booking),
+    room: (room) => createSingleRoomHtml(room)
+  };
+
+  column.forEach(item => {
+    htmlCode += map[request](item);
   });
+
   htmlCode += '</div>';
   return htmlCode;
 }
 
-const createGridHTML = allColumns => {
+const createGridHTML = (allColumns, request) => {
   let htmlCode = '';
   allColumns.forEach(column => {
-    htmlCode += createColumnHTML(column);
+    htmlCode += createColumnHTML(column, request);
   });
   return htmlCode;
 }
@@ -232,7 +238,7 @@ const renderName = name => {
 const renderDashboard = data => {
   const gridData = makeBookingsColumnData(data.bookingsOfInterest);
   bookingListGrid.innerHTML = '';
-  bookingListGrid.innerHTML = createGridHTML(gridData);
+  bookingListGrid.innerHTML = createGridHTML(gridData, "booking");
   renderName(data.currentUser.name);
   renderTotal(data.bookingsOfInterest);
 }
