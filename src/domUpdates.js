@@ -114,8 +114,17 @@ const setRoomData = room => {
   }
 }
 
-const makeBookingsColumnData = bookings => {
+const separateIntoColumns = bookings => {
+  const firstColumn = bookings.filter(booking => booking.column === 1);
+  const secondColumn = bookings.filter(booking => booking.column === 2);
+  const thirdColumn = bookings.filter(booking => booking.column === 3);
+  const fourthColumn = bookings.filter(booking => booking.column === 0);
+  const allColumns = [firstColumn, secondColumn, thirdColumn, fourthColumn];
+  const filteredColumns = allColumns.filter(column => column.length);
+  return filteredColumns;
+}
 
+const makeBookingsColumnData = bookings => {
   const mappedBookings = bookings.map((booking, index) => {
     const room = findRoomFromBooking(pageData.allRooms, booking);
     const cardInfo = setRoomData(room);
@@ -125,15 +134,7 @@ const makeBookingsColumnData = bookings => {
     cardInfo.isUpcoming = checkIfUpcoming(booking, generateCurrentDate());
     return cardInfo;
   })
-
-  const firstColumn = mappedBookings.filter(booking => booking.column === 1);
-  const secondColumn = mappedBookings.filter(booking => booking.column === 2);
-  const thirdColumn = mappedBookings.filter(booking => booking.column === 3);
-  const fourthColumn = mappedBookings.filter(booking => booking.column === 0);
-  const allColumns = [firstColumn, secondColumn, thirdColumn, fourthColumn];
-  const filteredColumns = allColumns.filter(column => column.length);
-
-  return filteredColumns;
+  return separateIntoColumns(mappedBookings);
 }
 
 const createSingleBookingHtml = booking => {
