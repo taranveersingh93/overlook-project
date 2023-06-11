@@ -316,7 +316,7 @@ body::-webkit-scrollbar {
   position: relative;
 }
 
-.current-booking-card-img {
+.card-img {
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -356,7 +356,7 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 
-.current-booking-card:hover .current-booking-card-img {
+.current-booking-card:hover .card-img {
   transform: scale(1.03);
 }
 
@@ -438,6 +438,44 @@ body::-webkit-scrollbar {
   opacity: 1;
   transform: translateY(-3px);
 }
+
+/* Room grid */
+.room-card {
+  margin-top: 12px;
+  width: 95%;
+  min-height: 30vw;
+  background-color: rgba(255, 255, 255, 0.48);
+  border-radius: 13px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.room-card-text {
+  height: 10%;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.room-card-text p {
+  opacity: 0.95;
+  margin: 0;
+  font-size: 1.8vw;
+}
+
+.room-card:hover .card-img {
+  transform: scale(1.03);
+}
+
+.room-card:hover {
+  cursor: pointer;
+}
+
 
 /* Helper classes */
 .hidden {
