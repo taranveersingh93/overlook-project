@@ -91,7 +91,7 @@ const selectRadio = (e) => {
   }
 }
 
-const fixColums = () => {
+const fixColumns = () => {
   let columns = 4;
   if (window.innerWidth < 1000) {
     columns = 1;
@@ -103,24 +103,27 @@ const fixColums = () => {
   return columns;
 }
 
+const setRoomData = room => {
+  return {
+    roomNumber: room.number,
+    cost: room.costPerNight,
+    numBeds: room.numBeds,
+    bedSize: correctCase(room.bedSize),
+    roomType: correctCase(room.roomType),
+    picture: room.picture,
+  }
+}
+
 const makeBookingsColumnData = bookings => {
 
   const mappedBookings = bookings.map((booking, index) => {
-
     const room = findRoomFromBooking(pageData.allRooms, booking);
-
-    return {
-      column: (index+1) % columns,
-      date: booking.date,
-      roomNumber: booking.roomNumber,
-      cost: room.costPerNight,
-      numBeds: room.numBeds,
-      bedSize: correctCase(room.bedSize),
-      roomType: correctCase(room.roomType),
-      picture: room.picture,
-      id: booking.id,
-      isUpcoming: checkIfUpcoming(booking, generateCurrentDate())
-    }
+    const cardInfo = setRoomData(room);
+    cardInfo.column = (index+1)%fixColumns();
+    cardInfo.date = booking.date;
+    cardInfo.id = booking.id;
+    cardInfo.isUpcoming = checkIfUpcoming(booking, generateCurrentDate());
+    return cardInfo;
   })
 
   const firstColumn = mappedBookings.filter(booking => booking.column === 1);
