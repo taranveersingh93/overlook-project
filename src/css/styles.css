@@ -401,8 +401,23 @@ body::-webkit-scrollbar {
 }
 
 /* New bookings */
+
+.icon {
+  min-width: 25px;
+  min-height: 25px;
+  max-height: 40%;
+  transition: 0.4s;
+  opacity: 0.6;
+}
+
+.icon:hover {
+  cursor: pointer;
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
 .new-bookings-ribbon {
-  height: 9%;
+  height: 11%;
   width: 95%;
   display: flex;
   position: relative;
@@ -418,6 +433,18 @@ body::-webkit-scrollbar {
   justify-content: space-around;
   align-items: center;
   border-radius: 20px;
+}
+
+.right-filter-icon-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 20%;
+}
+
+.dropdown {
+  max-width: 80%;
 }
 
 .new-bookings-display {
@@ -469,20 +496,6 @@ body::-webkit-scrollbar {
   justify-content: center;
   align-items: center;
   border: none;
-}
-
-.icon {
-  min-width: 25px;
-  min-height: 25px;
-  max-height: 40%;
-  transition: 0.4s;
-  opacity: 0.6;
-}
-
-.icon:hover {
-  cursor: pointer;
-  opacity: 1;
-  transform: translateY(-3px);
 }
 
 /* Room grid */
