@@ -29,7 +29,8 @@ import {
   showElement,
   hideElement,
   generateCurrentDate,
-  correctCase
+  correctCase,
+  humanizeDate
 } from './helperFunctions';
 
 import { 
@@ -295,10 +296,16 @@ const setDisplayMessage = (dateSelected) => {
     return
   }
 
+  const map = {
+    roomType: "Room Type",
+    numBeds: "Number of Beds",
+    cost: "Cost"
+  };
+
   if (!roomFilterApplied()) {
-    pageData.displayMessage = `Found ${pageData.roomsOfInterest.length} rooms for ${dateSelected}`
+    pageData.displayMessage = `Found ${pageData.roomsOfInterest.length} rooms for ${humanizeDate(dateSelected)}`
   } else {
-    pageData.displayMessage = `Rooms filtered by ${filterType.value}. \n Found ${pageData.roomsOfInterest.length} rooms for ${dateSelected}.`
+    pageData.displayMessage = `Rooms filtered by ${map[filterType.value]}. \n Found ${pageData.roomsOfInterest.length} rooms for ${humanizeDate(dateSelected)}.`
   }
 }
 

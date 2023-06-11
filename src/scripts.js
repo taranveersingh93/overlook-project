@@ -110,6 +110,11 @@ roomSearchContainer.addEventListener("keypress", function(e) {
 });
 filterType.addEventListener("change", changeFilterValue);
 filterSearchIcon.addEventListener("click", showNewRooms);
+filterSearchIcon.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    showNewRooms()
+  }
+});
 
 // Exports
 export {
