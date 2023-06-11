@@ -95,12 +95,10 @@ const fixColumns = () => {
   let columns = 4;
   if (window.innerWidth < 1000) {
     columns = 1;
-  } else if (window.innerWidth < 1300) {
+  } else {
     columns = 2;
-  } else if (window.innerWidth < 1600) {
-    columns = 3;
   }
-  return 2;
+  return columns;
 }
 
 const setRoomData = (room, index) => {
