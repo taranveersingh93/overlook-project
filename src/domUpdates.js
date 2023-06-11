@@ -285,11 +285,12 @@ const switchBookingView = clickedView => {
   flipViews(mainViews)
   toggleViewButtons(bookingButtons);
   changeBackground(clickedView);
-  // const map = {
-  //   "myBookings": loadMyBookings(pageData.currentUser),
-  //   "newBookings": loadNewBookings()
-  // }
-  // map[clickedView]();
+  if (clickedView === "newBookings") {
+    const dateSelected = document.querySelector('#calendar').value;
+    const existingBookings = filterBookingsByDate(pageData.allBookings, dateSelected);
+    const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings);
+    renderRooms(availableRooms);
+  }
 }
 
 const displayInfo = cardID => {
