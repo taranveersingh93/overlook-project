@@ -41,7 +41,7 @@ const filterRoomsByNumBeds = (rooms, value) => {
   if (value === "-") {
     return rooms;
   } else {
-    rooms.filter(room => room.numBeds === Number(value));
+    return rooms.filter(room => room.numBeds === Number(value));
   }
 }
 
@@ -50,7 +50,7 @@ const filterRoomsByCost = (rooms, value) => {
   if (workingValue === "-") {
     return rooms;
   } else {
-    return rooms.filter(room => room.costPerNight < workingValue);
+    return rooms.filter(room => (room.costPerNight) < workingValue);
   }
 }
 
