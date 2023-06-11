@@ -5,7 +5,7 @@ import {
   activateLoginBtn,
   submitUserData,
   selectRadio,
-  displayBookingInfo,
+  displayInfo,
   changeCurrentBookingsView,
   switchBookingView,
   actOnSearchIcon
@@ -39,9 +39,8 @@ const websiteView = document.querySelector('.website-view');
 const bookingListGrid = document.querySelector('.booking-list-grid');
 const chooseBookingList = document.querySelector('.choose-booking-list');
 const chooseBookingContainer = document.querySelector('.choose-booking');
-const calendarIcon = document.querySelector('#calendarIcon');
 const roomSearchContainer = document.querySelector('#roomSearchContainer');
-
+const roomGrid = document.querySelector('.room-grid');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -57,14 +56,24 @@ radioButtons.forEach(button => {
 });
 bookingListGrid.addEventListener("click", function(e) {
   if (e.target.closest(".current-booking-card")) {
-    displayBookingInfo(e.target.closest(".current-booking-card").id)
+    displayInfo(e.target.closest(".current-booking-card").id)
   }
 });
 bookingListGrid.addEventListener("keypress", function(e) {
   if (e.target.closest(".current-booking-card") && e.key ==="Enter") {
-    displayBookingInfo(e.target.closest(".current-booking-card").id)
+    displayInfo(e.target.closest(".current-booking-card").id)
   }
 });
+roomGrid.addEventListener("click", function(e) {
+  if (e.target.closest(".room-card")) {
+    displayInfo(e.target.closest(".room-card").id)
+  }
+});
+roomGrid.addEventListener("keypress", function(e) {
+  if (e.target.closest(".room-card") && e.key === "Enter") {
+    displayInfo(e.target.closest(".room-card").id)
+  }
+})
 chooseBookingList.addEventListener("click", function(e) {
   if (e.target.classList.contains("list-button") && e.target.classList.contains("unselected-button")) {
     changeCurrentBookingsView(e.target.id);
@@ -105,4 +114,5 @@ export {
   loginView,
   websiteView,
   bookingListGrid,
+  roomGrid
 }

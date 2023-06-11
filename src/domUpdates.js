@@ -12,7 +12,8 @@ import {
   loginFeedback,
   loginView,
   websiteView,
-  bookingListGrid
+  bookingListGrid,
+  roomGrid
 } from './scripts';
 
 import {
@@ -135,7 +136,10 @@ const makeBookingsColumnData = bookings => {
   return separateIntoColumns(mappedBookings);
 }
 
-const makeRoomsColumnData = rooms => rooms.map((room,index) => setRoomData(room, index));
+const makeRoomsColumnData = rooms => {
+  const mappedRooms = rooms.map((room,index) => setRoomData(room, index));
+  return separateIntoColumns(mappedRooms)
+}
 
 const createSingleRoomHtml = room => {
   let htmlCode = '';
@@ -241,6 +245,12 @@ const renderDashboard = data => {
   renderTotal(data.bookingsOfInterest);
 }
 
+const renderRooms = (rooms) => {
+  const roomData = makeRoomsColumnData(rooms)
+  roomGrid.innerHTML = '';
+  roomGrid.innerHTML = createGridHTML(roomData, "room");
+}
+
 const showDashboard = (data) => {
   hideElement(loginView);
   showElement(websiteView);
@@ -282,7 +292,7 @@ const switchBookingView = clickedView => {
   // map[clickedView]();
 }
 
-const displayBookingInfo = cardID => {
+const displayInfo = cardID => {
   document.getElementById(cardID).querySelector(".card-info").classList.toggle("display-info");
 }
 
@@ -317,7 +327,8 @@ const actOnSearchIcon = (element) => {
   const dateSelected = document.querySelector('#calendar').value;
   if (element.id === "searchIcon" && dateSelected) {
     const existingBookings = filterBookingsByDate(pageData.allBookings, dateSelected);
-    const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings)
+    const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings);
+    renderRooms(availableRooms);
   } else if (element.id && element.classList && map[element.id]) {
     map[element.id]();
   }
@@ -332,7 +343,7 @@ export {
   showGenericLoginError,
   showLoginError,
   showDashboard,
-  displayBookingInfo,
+  displayInfo,
   changeCurrentBookingsView,
   switchBookingView,
   actOnSearchIcon
