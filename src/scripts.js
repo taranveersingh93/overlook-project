@@ -45,6 +45,7 @@ const roomGrid = document.querySelector('.room-grid');
 const newBookingsDisplay = document.querySelector('.new-bookings-display');
 const filterType = document.querySelector('#filterType');
 const filterValues = document.querySelector('#filterValues');
+const filterSearchIcon = document.querySelector('#filterSearchIcon');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -107,6 +108,7 @@ roomSearchContainer.addEventListener("keypress", function(e) {
   }
 });
 filterType.addEventListener("change", changeFilterValue);
+filterSearchIcon.addEventListener("click", filterRooms);
 
 // Exports
 export {

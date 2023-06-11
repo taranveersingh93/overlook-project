@@ -22,16 +22,28 @@ const getUniqueRoomsFromBookings = bookings => {
   return uniqueRooms;
 }
 
-const findAvailableRooms = (allRooms, bookings) => {
-  
+const findAvailableRooms = (allRooms, bookings) => { 
   const unavailableRooms = getUniqueRoomsFromBookings(bookings).map(room => room.toString());
   const availableRooms = allRooms.filter(room => !unavailableRooms.includes(room.number.toString()));
   return availableRooms;
 }
 
+
+const filterAvailableRooms = (rooms, typeOfFilter, valueOfFilter) => {
+  const map = {
+    null: rooms,
+    roomType: () => filterRoomsByType(rooms, valueOfFilter),
+    numBeds: () => filterRoomsByNumBeds(rooms, valueOfFilter),
+    cost: () => filterRoomsByCost(rooms, valueOfFilter)    
+  };
+  return map[typeOfFilter];
+}
+
+
 export {
   addPicture,
   findRoomFromBooking,
   getUniqueRoomsFromBookings,
-  findAvailableRooms
+  findAvailableRooms,
+  filterAvailableRooms
 }

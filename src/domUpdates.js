@@ -35,6 +35,7 @@ import {
 import { 
   findAvailableRooms,
   findRoomFromBooking,
+  filterAvailableRooms
 } from './rooms';
 
 import {
@@ -282,13 +283,23 @@ const changeBackground = view => {
   websiteView.style.backgroundImage = map[view];
 }
 
-const loadNewBookings = () => {
+const setNewRooms = () => {
   const dateSelected = document.querySelector('#calendar').value;
   const existingBookings = filterBookingsByDate(pageData.allBookings, dateSelected);
-  pageData.roomsOfInterest = findAvailableRooms(pageData.allRooms, existingBookings);
+  const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings);
+  const filteredRooms = filterAvailableRooms(availableRooms, filterType.value, filterValues.value);
+  pageData.roomsOfInterest = filteredRooms;
   pageData.displayMessage = `Showing ${pageData.roomsOfInterest.length} available rooms for ${dateSelected}`;
+}
+
+const renderNewRooms = () => {
   newBookingsDisplay.innerText = pageData.displayMessage
   renderRooms(pageData.roomsOfInterest);
+}
+
+const showNewRooms = () => {
+  setNewRooms();
+  renderNewRooms();
 }
 
 const switchBookingView = clickedView => {
@@ -335,7 +346,7 @@ const actOnSearchIcon = (element) => {
   };
   const dateSelected = document.querySelector('#calendar').value;
   if (element.id === "calendarSearchIcon" && dateSelected) {
-    loadNewBookings();
+    showNewRooms();
   } else if (element.id && element.classList && map[element.id]) {
     map[element.id]();
   }
