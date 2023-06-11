@@ -283,11 +283,23 @@ const changeBackground = view => {
   websiteView.style.backgroundImage = map[view];
 }
 
-const roomFilterApplied = (numUnfilteredRooms) => pageData.roomsOfInterest.length === numUnfilteredRooms;
+const roomFilterApplied = () => {
+  return (filterType.value !== "-" && filterValues.value !== "-");
+}
+
 const noRoomsToDisplay = () => pageData.roomsOfInterest.length === 0;
 
-const setDisplayMessage = (dateSelected, numUnfilteredRooms) => {
-  
+const setDisplayMessage = (dateSelected) => {
+  if (noRoomsToDisplay()) {
+    pageData.displayMessage = "Sorry, no rooms available."
+    return
+  }
+
+  if (!roomFilterApplied()) {
+    pageData.displayMessage = `Found ${pageData.roomsOfInterest.length} rooms for ${dateSelected}`
+  } else {
+    pageData.displayMessage = `Rooms filtered by ${filterType.value}. \n Found ${pageData.roomsOfInterest.length} rooms for ${dateSelected}.`
+  }
 }
 
 const setNewRooms = () => {
@@ -316,7 +328,7 @@ const switchBookingView = clickedView => {
   toggleViewButtons(bookingButtons);
   changeBackground(clickedView);
   if (clickedView === "newBookings") {
-    loadNewBookings();
+    showNewRooms();
   }
 }
 
@@ -360,7 +372,8 @@ const actOnSearchIcon = (element) => {
 }
 
 const generateHTMLforSingleValue = value => {
-  return `<option value=${value}>${value}</option>`;
+  const workingValue = value.replaceAll("-", " ");
+  return `<option value=${value}>${workingValue}</option>`;
 }
 
 const generateHTMLforValues = (values) => {
@@ -373,9 +386,10 @@ const generateHTMLforValues = (values) => {
 
 const changeFilterValue = () => {
   const map = {
-    roomType: ["-", "Suite", "Residential Suite", "Junior Suite", "Single Room"],
+    "-": ["-"],
+    roomType: ["-", "Suite", "Residential-Suite", "Junior-Suite", "Single-Room"],
     numBeds: ["-","1","2"],
-    cost: ["=","Under 200", "Under 300", "Under 400"]
+    cost: ["-","Under-200", "Under-300", "Under-400"]
   };
 
   const newValues = map[filterType.value];
@@ -397,5 +411,6 @@ export {
   changeCurrentBookingsView,
   switchBookingView,
   actOnSearchIcon,
-  changeFilterValue
+  changeFilterValue,
+  showNewRooms
 }

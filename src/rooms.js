@@ -29,7 +29,7 @@ const findAvailableRooms = (allRooms, bookings) => {
 }
 
 const filterRoomsByType = (rooms, value) => {
-  const workingValue = value.toLowerCase();
+  const workingValue = (value.replaceAll("-", " ")).toLowerCase();
   if (workingValue === "-") {
     return rooms;
   } else {
@@ -55,6 +55,9 @@ const filterRoomsByCost = (rooms, value) => {
 }
 
 const filterAvailableRooms = (rooms, typeOfFilter, valueOfFilter) => {
+  console.log("rooms", rooms);
+  console.log("typeof", typeOfFilter),
+  console.log("val", valueOfFilter)
   const map = {
     "-": () => rooms,
     roomType: () => filterRoomsByType(rooms, valueOfFilter),

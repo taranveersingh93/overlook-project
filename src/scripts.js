@@ -9,7 +9,8 @@ import {
   changeCurrentBookingsView,
   switchBookingView,
   actOnSearchIcon,
-  changeFilterValue
+  changeFilterValue,
+  showNewRooms
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -108,7 +109,7 @@ roomSearchContainer.addEventListener("keypress", function(e) {
   }
 });
 filterType.addEventListener("change", changeFilterValue);
-filterSearchIcon.addEventListener("click", filterRooms);
+filterSearchIcon.addEventListener("click", showNewRooms);
 
 // Exports
 export {
