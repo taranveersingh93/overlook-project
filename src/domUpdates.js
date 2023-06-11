@@ -91,18 +91,22 @@ const selectRadio = (e) => {
   }
 }
 
+const fixColums = () => {
+  let columns = 4;
+  if (window.innerWidth < 1000) {
+    columns = 1;
+  } else if (window.innerWidth < 1300) {
+    columns = 2;
+  } else if (window.innerWidth < 1600) {
+    columns = 3;
+  }
+  return columns;
+}
+
 const makeBookingsColumnData = bookings => {
 
   const mappedBookings = bookings.map((booking, index) => {
-    let columns = 4;
-    if (window.innerWidth < 1000) {
-      columns = 1;
-    } else if (window.innerWidth < 1300) {
-      columns = 2;
-    } else if (window.innerWidth < 1600) {
-      columns = 3;
-    }
-    
+
     const room = findRoomFromBooking(pageData.allRooms, booking);
 
     return {
