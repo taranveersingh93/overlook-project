@@ -103,7 +103,7 @@ const fixColumns = () => {
   return columns;
 }
 
-const setRoomData = room => {
+const setRoomData = (room, index) => {
   return {
     roomNumber: room.number,
     cost: room.costPerNight,
@@ -111,6 +111,7 @@ const setRoomData = room => {
     bedSize: correctCase(room.bedSize),
     roomType: correctCase(room.roomType),
     picture: room.picture,
+    column: (index+1)%fixColumns()
   }
 }
 
@@ -127,8 +128,7 @@ const separateIntoColumns = bookings => {
 const makeBookingsColumnData = bookings => {
   const mappedBookings = bookings.map((booking, index) => {
     const room = findRoomFromBooking(pageData.allRooms, booking);
-    const cardInfo = setRoomData(room);
-    cardInfo.column = (index+1)%fixColumns();
+    const cardInfo = setRoomData(room, index);
     cardInfo.date = booking.date;
     cardInfo.id = booking.id;
     cardInfo.isUpcoming = checkIfUpcoming(booking, generateCurrentDate());
@@ -136,6 +136,8 @@ const makeBookingsColumnData = bookings => {
   })
   return separateIntoColumns(mappedBookings);
 }
+
+const makeRoomsColumnData = rooms => rooms.map((room,index) => setRoomData(room, index));
 
 const createSingleBookingHtml = booking => {
   let extraClass = "past-booking";
