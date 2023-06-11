@@ -14,7 +14,9 @@ import {
   websiteView,
   bookingListGrid,
   roomGrid,
-  newBookingsDisplay
+  newBookingsDisplay,
+  filterValues,
+  filterType
 } from './scripts';
 
 import {
@@ -339,6 +341,32 @@ const actOnSearchIcon = (element) => {
   }
 }
 
+const generateHTMLforSingleValue = value => {
+  return `<option value=${value}>${value}</option>`;
+}
+
+const generateHTMLforValues = (values) => {
+  let htmlCode = ''
+  values.forEach(value => {
+    htmlCode += generateHTMLforSingleValue(value);
+  });
+  return htmlCode;
+}
+
+const changeFilterValue = () => {
+  console.log(filterType.value)
+  const map = {
+    roomType: ["Suite", "Residential Suite", "Junior Suite", "Single Room"],
+    numBeds: [1,2],
+    cost: ["Under 200", "Under 300", "Under 400"]
+  };
+
+  const newValues = map[filterType.value];
+  const htmlCode = generateHTMLforValues(newValues);
+  filterValues.innerHTML = '';
+  filterValues.innerHTML = htmlCode;
+}
+
 export {
   activateLoginBtn,
   username,
@@ -351,5 +379,6 @@ export {
   displayInfo,
   changeCurrentBookingsView,
   switchBookingView,
-  actOnSearchIcon
+  actOnSearchIcon,
+  changeFilterValue
 }

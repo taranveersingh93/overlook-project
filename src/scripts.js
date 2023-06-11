@@ -8,7 +8,8 @@ import {
   displayInfo,
   changeCurrentBookingsView,
   switchBookingView,
-  actOnSearchIcon
+  actOnSearchIcon,
+  changeFilterValue
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -42,6 +43,8 @@ const chooseBookingContainer = document.querySelector('.choose-booking');
 const roomSearchContainer = document.querySelector('#roomSearchContainer');
 const roomGrid = document.querySelector('.room-grid');
 const newBookingsDisplay = document.querySelector('.new-bookings-display');
+const filterType = document.querySelector('#filterType');
+const filterValues = document.querySelector('#filterValues');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -74,35 +77,36 @@ roomGrid.addEventListener("keypress", function(e) {
   if (e.target.closest(".room-card") && e.key === "Enter") {
     displayInfo(e.target.closest(".room-card").id)
   }
-})
+});
 chooseBookingList.addEventListener("click", function(e) {
   if (e.target.classList.contains("list-button") && e.target.classList.contains("unselected-button")) {
     changeCurrentBookingsView(e.target.id);
   }
-})
+});
 chooseBookingList.addEventListener("keypress", function(e) {
   if (e.target.classList.contains("list-button") && e.target.classList.contains("unselected-button") && e.key === "Enter") {
     changeCurrentBookingsView(e.target.id);
   }
-})
+});
 chooseBookingContainer.addEventListener("click", function(e) {
   if (e.target.classList.contains("bookings-button")) {
     switchBookingView(e.target.id)
   }
-})
+});
 chooseBookingContainer.addEventListener("keypress", function(e) {
   if (e.target.classList.contains("bookings-button") && e.key === "Enter") {
     switchBookingView(e.target.id);
   }
-})
+});
 roomSearchContainer.addEventListener("click", function(e) {
   actOnSearchIcon(e.target);
-})
+});
 roomSearchContainer.addEventListener("keypress", function(e) {
   if (e.key === "Enter") {
     actOnSearchIcon(e.target);
   }
-})
+});
+filterType.addEventListener("change", changeFilterValue);
 
 // Exports
 export {
@@ -116,5 +120,7 @@ export {
   websiteView,
   bookingListGrid,
   roomGrid,
-  newBookingsDisplay
+  newBookingsDisplay,
+  filterValues,
+  filterType
 }
