@@ -100,7 +100,7 @@ const fixColumns = () => {
   } else if (window.innerWidth < 1600) {
     columns = 3;
   }
-  return columns;
+  return 2;
 }
 
 const setRoomData = (room, index) => {
