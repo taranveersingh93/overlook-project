@@ -209,7 +209,7 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 
-.functionality-ribbon {
+.list-bookings-ribbon {
   align-items: center;
   margin-top: 10px;
   display: flex;
@@ -294,7 +294,7 @@ body::-webkit-scrollbar {
   overflow-y: scroll;
 }
 
-.booking-list-grid::-webkit-scrollbar {
+.display-grid::-webkit-scrollbar {
   display: none;
 }
 
@@ -357,7 +357,7 @@ body::-webkit-scrollbar {
   margin-top: 2px;
   margin-bottom: 0;
   font-size: 1.7vw;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .display-info {
@@ -388,7 +388,8 @@ body::-webkit-scrollbar {
 
 .current-booking-card-text p {
   margin: 0;
-  font-size: 1.8vw;
+  font-size: 2vw;
+  opacity: 0.7;
 }
 
 .upcoming-booking {
@@ -400,16 +401,49 @@ body::-webkit-scrollbar {
 }
 
 /* New bookings */
-#roomSearchContainer {
-  margin-top: 20px;
+.new-bookings-ribbon {
   height: 9%;
-  width: 35%;
+  width: 95%;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-bookings-ribbon-element {
+  margin-top: 20px;
+  height: 100%;
   min-width: 250px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.477);
   border-radius: 20px;
+}
+
+.new-bookings-display {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 1.4vw;
+}
+
+.filter-element {
+  background-color: rgba(255, 255, 255, 0.477);
+  width: 30%;
+}
+
+.room-filter-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.filter-dropdown-container {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .date-container {
@@ -479,7 +513,8 @@ body::-webkit-scrollbar {
 
 .room-card-text p {
   margin: 0;
-  font-size: 1.8vw;
+  font-size: 2vw;
+  opacity: 0.6;
 }
 
 .book-btn {
@@ -488,7 +523,6 @@ body::-webkit-scrollbar {
   width: 10vw;
   backdrop-filter: blur(5px);
   font-size: 1vw;
-  /* background-color: #604d46; */
   background-color: rgb(21 78 92);
   color: rgba(255, 255, 255, 0.5);
   transition: 0.2s;

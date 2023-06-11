@@ -41,6 +41,7 @@ const chooseBookingList = document.querySelector('.choose-booking-list');
 const chooseBookingContainer = document.querySelector('.choose-booking');
 const roomSearchContainer = document.querySelector('#roomSearchContainer');
 const roomGrid = document.querySelector('.room-grid');
+const newBookingsDisplay = document.querySelector('.new-bookings-display');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -114,5 +115,6 @@ export {
   loginView,
   websiteView,
   bookingListGrid,
-  roomGrid
+  roomGrid,
+  newBookingsDisplay
 }

@@ -57,7 +57,7 @@
       </nav>
       <main class="display-area">
         <section class="list-bookings-view main-view">
-          <section class="functionality-ribbon">
+          <section class="list-bookings-ribbon">
             <section class="choose-booking-list">
               <div class="booking-choice-container">
                 <section tabindex="0" role="button" class="all-bookings-button list-button selected-button" id="allBookings">
@@ -79,39 +79,40 @@
               <h1 class="total-spend">Total spend:   $<span class="amount">0</span></h1>
             </section>
           </section>
-          <div class="booking-list-grid display-grid">
-            <!-- <div class="booking-column">
-              <div class="booking-card" tabindex="0" role="button">
-                <div class="card-img-container">
-                  <img class="booking-card-img" src="./images/junior-suite.jpg">
-                  <section class="card-info">
-                    <p>Room type: single room</p>
-                    <p>Bed size: queen</p>
-                    <p>Number of beds: 2</p>
-                    <p>Cost: 100$</p>
-                  </section>
-                </div>
-                <section class="booking-card-text">
-                  <p class="card-room-text">Room 12</p>
-                  <p class="card-date-text">Date: 2023/01/01</p>
-                </section>
-              </div>
-            </div> -->
-          </div>
+          <div class="booking-list-grid display-grid"></div>
         </section>
         <section class="new-bookings-view main-view hidden">
-          <section id="roomSearchContainer">
-            <div class="date-container">
-              <img class="icon" id="calendarIcon" tabindex="0" role="button" src="./images/calendar.png"> 
-              <input type="text" id="calendar" class="calender-input" placeholder="Pick a date">
-              <img class="icon" id="refreshIcon" tabindex="0" role="button" src="./images/refresh.png">
-              <img class="icon" id="crossIcon" tabindex="0" role="button" src="./images/cross.png">
-            </div>
-            <img class="icon search-room" tabindex="0" role="button" id="searchIcon" src="./images/search.png">
-          </section>
-          <div class="room-grid display-grid">
+          <div class="new-bookings-ribbon">
+            <section id="roomSearchContainer" class="new-bookings-ribbon-element left-filter filter-element">
+              <div class="date-container">
+                <img class="icon" id="calendarIcon" tabindex="0" role="button" src="./images/calendar.png"> 
+                <input type="text" id="calendar" class="calender-input" placeholder="Pick a date">
+                <img class="icon" id="calendarRefreshIcon" tabindex="0" role="button" src="./images/refresh.png">
+                <img class="icon" id="crossIcon" tabindex="0" role="button" src="./images/cross.png">
+              </div>
+              <img class="icon search-room" tabindex="0" role="button" id="calendarSearchIcon" src="./images/search.png">
+            </section>
+            <section class="new-bookings-display new-bookings-ribbon-element">
 
+            </section>
+            <section class="room-filter-container new-bookings-ribbon-element right-filter filter-element">
+              <div class="first-filter filter-dropdown-container">
+                <label for="filter-type">Filter by:</label>
+                <select name="filter-type" id="filter-type">
+                  <option value="roomType">Room Type</option>
+                  <option value="numBeds">Number of Beds</option>
+                  <option value="cost">Cost</option>
+                </select>
+              </div>
+              <div class="second-filter filter-dropdown-container">
+                <label for="filter-values">Select Filter</label>
+                <select name="filter-values" id="filter-values">
+
+                </select>
+              </div>
+            </section>            
           </div>
+          <div class="room-grid display-grid"></div>
         </section>
       </main>
     </div>

@@ -13,7 +13,8 @@ import {
   loginView,
   websiteView,
   bookingListGrid,
-  roomGrid
+  roomGrid,
+  newBookingsDisplay
 } from './scripts';
 
 import {
@@ -279,6 +280,15 @@ const changeBackground = view => {
   websiteView.style.backgroundImage = map[view];
 }
 
+const loadNewBookings = () => {
+  const dateSelected = document.querySelector('#calendar').value;
+  const existingBookings = filterBookingsByDate(pageData.allBookings, dateSelected);
+  pageData.roomsOfInterest = findAvailableRooms(pageData.allRooms, existingBookings);
+  pageData.displayMessage = `Showing ${pageData.roomsOfInterest.length} available rooms for ${dateSelected}`;
+  newBookingsDisplay.innerText = pageData.displayMessage
+  renderRooms(pageData.roomsOfInterest);
+}
+
 const switchBookingView = clickedView => {
   const mainViews = document.querySelectorAll('.main-view');
   const bookingButtons = document.querySelectorAll('.bookings-button');
@@ -286,10 +296,7 @@ const switchBookingView = clickedView => {
   toggleViewButtons(bookingButtons);
   changeBackground(clickedView);
   if (clickedView === "newBookings") {
-    const dateSelected = document.querySelector('#calendar').value;
-    const existingBookings = filterBookingsByDate(pageData.allBookings, dateSelected);
-    const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings);
-    renderRooms(availableRooms);
+    loadNewBookings();
   }
 }
 
@@ -321,15 +328,12 @@ const actOnSearchIcon = (element) => {
   const map = {
     calendar: () => openCalendar(),
     calendarIcon: () => openCalendar(),
-    refreshIcon: () => refreshCalendar(),
+    calendarRefreshIcon: () => refreshCalendar(),
     crossIcon: () => closeCalendar()
   };
-
   const dateSelected = document.querySelector('#calendar').value;
-  if (element.id === "searchIcon" && dateSelected) {
-    const existingBookings = filterBookingsByDate(pageData.allBookings, dateSelected);
-    const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings);
-    renderRooms(availableRooms);
+  if (element.id === "calendarSearchIcon" && dateSelected) {
+    loadNewBookings();
   } else if (element.id && element.classList && map[element.id]) {
     map[element.id]();
   }
