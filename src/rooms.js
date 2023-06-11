@@ -28,15 +28,40 @@ const findAvailableRooms = (allRooms, bookings) => {
   return availableRooms;
 }
 
+const filterRoomsByType = (rooms, value) => {
+  const workingValue = value.toLowerCase();
+  if (workingValue === "-") {
+    return rooms;
+  } else {
+    return rooms.filter(room => room.roomType === workingValue);
+  }
+}
+
+const filterRoomsByNumBeds = (rooms, value) => {
+  if (value === "-") {
+    return rooms;
+  } else {
+    rooms.filter(room => room.numBeds === Number(value));
+  }
+}
+
+const filterRoomsByCost = (rooms, value) => {
+  const workingValue = Number(value.slice(-3));
+  if (workingValue === "-") {
+    return rooms;
+  } else {
+    return rooms.filter(room => room.costPerNight < workingValue);
+  }
+}
 
 const filterAvailableRooms = (rooms, typeOfFilter, valueOfFilter) => {
   const map = {
-    null: rooms,
+    "-": () => rooms,
     roomType: () => filterRoomsByType(rooms, valueOfFilter),
     numBeds: () => filterRoomsByNumBeds(rooms, valueOfFilter),
     cost: () => filterRoomsByCost(rooms, valueOfFilter)    
   };
-  return map[typeOfFilter];
+  return map[typeOfFilter]();
 }
 
 

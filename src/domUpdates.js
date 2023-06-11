@@ -283,13 +283,20 @@ const changeBackground = view => {
   websiteView.style.backgroundImage = map[view];
 }
 
+const roomFilterApplied = (numUnfilteredRooms) => pageData.roomsOfInterest.length === numUnfilteredRooms;
+const noRoomsToDisplay = () => pageData.roomsOfInterest.length === 0;
+
+const setDisplayMessage = (dateSelected, numUnfilteredRooms) => {
+  
+}
+
 const setNewRooms = () => {
   const dateSelected = document.querySelector('#calendar').value;
   const existingBookings = filterBookingsByDate(pageData.allBookings, dateSelected);
   const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings);
   const filteredRooms = filterAvailableRooms(availableRooms, filterType.value, filterValues.value);
   pageData.roomsOfInterest = filteredRooms;
-  pageData.displayMessage = `Showing ${pageData.roomsOfInterest.length} available rooms for ${dateSelected}`;
+  setDisplayMessage(dateSelected, availableRooms.length)
 }
 
 const renderNewRooms = () => {
@@ -365,11 +372,10 @@ const generateHTMLforValues = (values) => {
 }
 
 const changeFilterValue = () => {
-  console.log(filterType.value)
   const map = {
-    roomType: ["Suite", "Residential Suite", "Junior Suite", "Single Room"],
-    numBeds: [1,2],
-    cost: ["Under 200", "Under 300", "Under 400"]
+    roomType: ["-", "Suite", "Residential Suite", "Junior Suite", "Single Room"],
+    numBeds: ["-","1","2"],
+    cost: ["=","Under 200", "Under 300", "Under 400"]
   };
 
   const newValues = map[filterType.value];
