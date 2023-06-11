@@ -139,6 +139,28 @@ const makeBookingsColumnData = bookings => {
 
 const makeRoomsColumnData = rooms => rooms.map((room,index) => setRoomData(room, index));
 
+const createSingleRoomHtml = room => {
+  let htmlCode = '';
+  htmlCode += `
+  <div class="room-card" tabindex="0" role="button" id="${room.roomNumber}">
+    <div class="card-img-container">
+      <img class="room-card-img card-img" src="${room.picture}">
+      <section class="card-info">
+        <p>Room Type: ${room.roomType}</p>
+        <p>Bed Size: ${room.bedSize}</p>
+        <p>Number of Beds: ${room.numBeds}</p>
+        <p>Cost: $${room.cost}</p>
+      </section>
+    </div>
+    <section class="room-card-text">
+      <p class="card-room-text">Room ${room.roomNumber}</p>
+      <button class="book-btn">Book room</button>
+    </section>
+  </div>
+  `;
+  return htmlCode
+}
+
 const createSingleBookingHtml = booking => {
   let extraClass = "past-booking";
   if (booking.isUpcoming) {
@@ -148,7 +170,7 @@ const createSingleBookingHtml = booking => {
   htmlCode += `
   <div class="current-booking-card" tabindex="0" role="button" id="${booking.id}">
     <div class="card-img-container">
-      <img class="current-booking-card-img" src="${booking.picture}">
+      <img class="current-booking-card-img card-img" src="${booking.picture}">
       <section class="card-info">
         <p>Room Type: ${booking.roomType}</p>
         <p>Bed Size: ${booking.bedSize}</p>
