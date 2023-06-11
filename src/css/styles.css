@@ -311,7 +311,8 @@ body::-webkit-scrollbar {
   margin-top: 12px;
   width: 95%;
   min-height: 30vw;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.10);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 13px;
   overflow: hidden;
   display: flex;
@@ -355,7 +356,7 @@ body::-webkit-scrollbar {
 .card-info p {
   margin-top: 2px;
   margin-bottom: 0;
-  font-size: 2vw;
+  font-size: 1.7vw;
   opacity: 0.6;
 }
 
@@ -382,10 +383,10 @@ body::-webkit-scrollbar {
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .current-booking-card-text p {
-  opacity: 0.55;
   margin: 0;
   font-size: 1.8vw;
 }
@@ -455,8 +456,9 @@ body::-webkit-scrollbar {
   margin-top: 12px;
   width: 95%;
   min-height: 30vw;
-  background-color: rgba(255, 255, 255, 0.48);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -465,28 +467,43 @@ body::-webkit-scrollbar {
 }
 
 .room-card-text {
+  padding: 5px;
   height: 10%;
   display: flex;
   width: 90%;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .room-card-text p {
-  opacity: 0.95;
   margin: 0;
   font-size: 1.8vw;
 }
 
-.room-card:hover .card-img {
-  transform: scale(1.03);
+.book-btn {
+  height: 2vw;
+  border-radius: 12px;
+  width: 10vw;
+  backdrop-filter: blur(5px);
+  font-size: 1vw;
+  /* background-color: #604d46; */
+  background-color: rgb(21 78 92);
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.2s;
 }
 
-.room-card:hover {
+.book-btn:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  color: white;
+}
+
+.card-img:hover {
+  transform: scale(1.03);
   cursor: pointer;
 }
-
 
 /* Helper classes */
 .hidden {
