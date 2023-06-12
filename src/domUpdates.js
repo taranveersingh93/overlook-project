@@ -47,6 +47,7 @@ import {
   setBookingsOfInterest,
   filterBookingsByDate
 } from './bookings';
+import { render } from 'sass';
 
 let username;
 let password;
@@ -345,6 +346,8 @@ const switchBookingView = clickedView => {
   changeBackground(clickedView);
   if (clickedView === "newBookingsView") {
     showNewRooms();
+  } else {
+    renderDashboard(pageData);
   }
 }
 
