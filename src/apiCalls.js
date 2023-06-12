@@ -8,6 +8,9 @@ import {
 import {
   addPicture
 } from './rooms'
+import {
+  makeBody
+} from './helperFunctions'
 
 const pageData = {
   currentView: "loginView"
@@ -68,6 +71,10 @@ const getRooms = () => {
         pageData.allRooms = roomsInfo.map(room => addPicture(room));
       }
     })
+}
+
+const postBooking = (userID, date, roomNumber) => {
+  const body = makeBody(userID, date, roomNumber);
 }
 
 export {

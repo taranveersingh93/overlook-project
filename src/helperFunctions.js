@@ -63,11 +63,20 @@ const humanizeDate = date => {
   return `${months[month]} ${newDate}, ${year}`;
 }
 
+const makeBody = (userID, date, roomNumber) => {
+  return {
+    "userID": Number(userID),
+    "date": date.toString().replaceAll("-", "/"),
+    "roomNumber": Number(roomNumber)
+  };
+}
+
 export {
   generateCurrentDate,
   hideElement,
   showElement,
   correctCase,
   formatDate,
-  humanizeDate
+  humanizeDate,
+  makeBody
 }
