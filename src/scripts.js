@@ -13,7 +13,8 @@ import {
   showNewRooms,
   refreshFilter,
   resizeDisplay,
-  actOnRoomCard
+  actOnRoomCard,
+  setUserForAccessibility
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -130,7 +131,7 @@ filterRefreshIcon.addEventListener("keypress", function(e) {
   }
 })
 window.addEventListener("resize", resizeDisplay);
-
+window.addEventListener("load", setUserForAccessibility);
 
 // Exports
 export {
@@ -148,5 +149,5 @@ export {
   filterValues,
   filterType,
   displayText1,
-  displayText2
+  displayText2,
 }
