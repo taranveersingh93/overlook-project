@@ -136,5 +136,25 @@ describe('Test booking functionality', () => {
     ];
     const bookingsOfInt = setBookingsOfInterest(viewID, bookings, currentDate);
     assert.deepEqual(bookingsOfInt, expectedBookings);
+  });
+
+  it('should return all bookings on a particular date', () => {
+    const bookings = [
+      {"id":"5fwrgu4i7k55hl6t9","userID":38,"date":"2023/12/14","roomNumber":14},
+      {"id":"5fwrgu4i7k55hl6ta","userID":25,"date":"2022/01/11","roomNumber":9},
+      {"id":"5fwrgu4i7k55hl6tb","userID":49,"date":"2022/01/11","roomNumber":5}
+    ];
+
+    const expectedBookings = [
+      {"id":"5fwrgu4i7k55hl6ta","userID":25,"date":"2022/01/11","roomNumber":9},
+      {"id":"5fwrgu4i7k55hl6tb","userID":49,"date":"2022/01/11","roomNumber":5}
+    ];
+    const filteredBookings = filterBookingsByDate(bookings, "2022/01/11");
+    assert.deepEqual(filteredBookings, expectedBookings);
+  })
+
+  it('should return no booking if date does not match', () => {
+    const filteredBookings = filterBookingsByDate(sampleBookings, "2026/02/21");
+    assert.deepEqual(filteredBookings, []);
   })
 });
