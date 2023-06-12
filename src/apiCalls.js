@@ -5,7 +5,8 @@ import {
   showLoginError,
   showDashboard,
   setDisplaySuccessMessage,
-  showNewRooms
+  showNewRooms,
+  setDisplayFailMessage
 } from './domUpdates'
 import {
   addPicture
@@ -24,7 +25,8 @@ const convertFetchToJSON = url => {
 
 const getAllBookings = () => {
   return convertFetchToJSON(`http://localhost:3001/api/v1/bookings`)
-    .then(data => data.bookings); 
+    .then(data => data.bookings)
+    .catch(err => console.error(err)); 
 }
 
 const setUserData = (user) => {
@@ -35,6 +37,10 @@ const setUserData = (user) => {
       pageData.userBookings = filterBookingsByUser(pageData.allBookings, pageData.currentUser);      
       pageData.bookingsOfInterest = [...pageData.userBookings];
     })
+    .catch(err => {
+      showGenericLoginError();
+      console.error(err);
+    })
 }
 
 const prepareDashboard = user => {
@@ -44,6 +50,10 @@ const prepareDashboard = user => {
         .then(() => {
           showDashboard(pageData);
         })
+    })
+    .catch(err => {
+      showGenericLoginError();
+      console.error(err);
     })
 }
 
@@ -71,7 +81,13 @@ const getRooms = () => {
       if (!response.message) {
         const roomsInfo = response.rooms;
         pageData.allRooms = roomsInfo.map(room => addPicture(room));
+      } else {
+        showGenericLoginError();
       }
+    })
+    .catch((err) => {
+      showGenericLoginError();
+      console.error(err)
     })
 }
 
@@ -92,10 +108,18 @@ const postBooking = (userID, date, roomNumber) => {
       'Content-Type': 'application/json'
     }
   })
+    .then(data => data.json())
     .then(response => {
-      if (!response.message) {
+      console.log(response.message)
+      if (response.message.includes("successfully posted")) {
         refreshBookings(date, roomNumber);
+      } else {
+        setDisplayFailMessage();
       }
+    })
+    .catch(err => {
+      setDisplayFailMessage();
+      console.error(err);
     })
 }
 
