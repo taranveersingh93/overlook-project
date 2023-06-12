@@ -88,6 +88,13 @@ describe('Test booking functionality', () => {
 
   it ('should add cost of multiple bookings', () => {
     const bookings = [{roomNumber:3}, {roomNumber:5}];
+    const rooms = [{number:3, costPerNight:100}, {number:5, costPerNight: 200}];
+    const cost = calculateCost(rooms, bookings);
+    assert.equal(cost, 300);
+  });
+
+  it ('should round down added cost of multiple bookings', () => {
+    const bookings = [{roomNumber:3}, {roomNumber:5}];
     const rooms = [{number:3, costPerNight:100.5}, {number:5, costPerNight: 200}];
     const cost = calculateCost(rooms, bookings);
     assert.equal(cost, 300);
