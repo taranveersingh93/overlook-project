@@ -47,7 +47,6 @@ import {
   setBookingsOfInterest,
   filterBookingsByDate
 } from './bookings';
-import { render } from 'sass';
 
 let username;
 let password;
