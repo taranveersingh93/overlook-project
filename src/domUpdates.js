@@ -1,6 +1,7 @@
 import {
   getUser,
-  pageData
+  pageData,
+  postBooking
 } from './apiCalls';
 
 import {
@@ -14,7 +15,8 @@ import {
   websiteView,
   bookingListGrid,
   roomGrid,
-  newBookingsDisplay,
+  displayText1,
+  displayText2,
   filterValues,
   filterType
 } from './scripts';
@@ -323,11 +325,11 @@ const setNewRooms = () => {
   const availableRooms = findAvailableRooms(pageData.allRooms, existingBookings);
   const filteredRooms = filterAvailableRooms(availableRooms, filterType.value, filterValues.value);
   pageData.roomsOfInterest = filteredRooms;
-  setDisplayMessage(dateSelected, availableRooms.length)
+  setDisplayMessage(dateSelected)
 }
 
 const renderNewRooms = () => {
-  newBookingsDisplay.innerText = pageData.displayMessage
+  displayText1.innerText = pageData.displayMessage
   renderRooms(pageData.roomsOfInterest);
 }
 
@@ -426,6 +428,28 @@ const resizeDisplay = () => {
   }
 }
 
+const setDisplaySuccessMessage = (date, roomNumber) => {
+  const successMessage = `Success! Room ${roomNumber} booked for ${humanizeDate(date)}`;
+  displayText2.innerText = successMessage;
+  displayText2.classList.add("show-feedback");
+  setTimeout(() => {displayText2.classList.remove('show-feedback')}, 4001)
+}
+
+const bookRoom = (roomNumber) => {
+  const dateSelected = document.querySelector('#calendar').value;
+  const userID = pageData.currentUser.id;
+  postBooking(userID, dateSelected, roomNumber)
+}
+
+const actOnRoomCard = (element) => {
+  const cardID = element.closest('.room-card').id;
+  if (element.classList.contains("book-btn")) {
+    bookRoom(cardID);
+  } else {
+    displayInfo(cardID);
+  }
+}
+
 export {
   activateLoginBtn,
   username,
@@ -442,5 +466,8 @@ export {
   changeFilterValue,
   showNewRooms,
   refreshFilter,
-  resizeDisplay
+  resizeDisplay,
+  setDisplaySuccessMessage,
+  bookRoom,
+  actOnRoomCard
 }

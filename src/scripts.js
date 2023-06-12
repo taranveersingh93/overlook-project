@@ -12,7 +12,8 @@ import {
   changeFilterValue,
   showNewRooms,
   refreshFilter,
-  resizeDisplay
+  resizeDisplay,
+  actOnRoomCard
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -26,7 +27,7 @@ import './images/calendar.png'
 import './images/refresh.png'
 import './images/search.png'
 import './images/cross.png'
-import { pageData } from './apiCalls';
+
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
@@ -51,6 +52,9 @@ const filterType = document.querySelector('#filterType');
 const filterValues = document.querySelector('#filterValues');
 const filterSearchIcon = document.querySelector('#filterSearchIcon');
 const filterRefreshIcon = document.querySelector('#filterRefreshIcon');
+const displayText1 = document.querySelector('.display-text-1');
+const displayText2 = document.querySelector('.display-text-2');
+const bookButtons = document.querySelectorAll('.book-btn');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -76,12 +80,12 @@ bookingListGrid.addEventListener("keypress", function(e) {
 });
 roomGrid.addEventListener("click", function(e) {
   if (e.target.closest(".room-card")) {
-    displayInfo(e.target.closest(".room-card").id)
+    actOnRoomCard(e.target)
   }
 });
 roomGrid.addEventListener("keypress", function(e) {
   if (e.target.closest(".room-card") && e.key === "Enter") {
-    displayInfo(e.target.closest(".room-card").id)
+    actOnRoomCard(e.target);
   }
 });
 chooseBookingList.addEventListener("click", function(e) {
@@ -125,8 +129,9 @@ filterRefreshIcon.addEventListener("keypress", function(e) {
     refreshFilter();
   }
 })
-
 window.addEventListener("resize", resizeDisplay);
+
+
 // Exports
 export {
   loginBtn,
@@ -141,5 +146,7 @@ export {
   roomGrid,
   newBookingsDisplay,
   filterValues,
-  filterType
+  filterType,
+  displayText1,
+  displayText2
 }

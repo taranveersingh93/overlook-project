@@ -464,9 +464,29 @@ body::-webkit-scrollbar {
   color: rgba(0, 0, 0, 0.45);
   font-size: 25px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.new-bookings-display p {
+  margin: 2px;
+}
+
+@keyframes fade-in-out{
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .filter-element {
@@ -577,5 +597,9 @@ body::-webkit-scrollbar {
 }
 
 .invisible {
-  visibility: hidden;
+  opacity: 0;
+}
+
+.show-feedback {
+  animation: fade-in-out 4s linear;
 }
