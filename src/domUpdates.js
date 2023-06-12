@@ -248,7 +248,12 @@ const renderName = name => {
 const renderDashboard = data => {
   const gridData = makeBookingsColumnData(data.bookingsOfInterest);
   bookingListGrid.innerHTML = '';
-  bookingListGrid.innerHTML = createGridHTML(gridData, "booking");
+
+  if (gridData.length) {
+    bookingListGrid.innerHTML = createGridHTML(gridData, "booking");
+  } else {
+    bookingListGrid.innerHTML = `<h2>Sorry, you don't have any bookings</h2>`
+  }
   renderName(data.currentUser.name);
   renderTotal(data.bookingsOfInterest);
 }
@@ -260,9 +265,14 @@ const renderRooms = (rooms) => {
   } else {
     newBookingsRibbon.style.flexDirection = "row";
   }
+  
   const roomData = makeRoomsColumnData(rooms)
   roomGrid.innerHTML = '';
-  roomGrid.innerHTML = createGridHTML(roomData, "room");
+  if (roomData.length) {
+    roomGrid.innerHTML = createGridHTML(roomData, "room");
+  } else {
+    roomGrid.innerHTML = `<h2>Sorry, you don't have any bookings</h2>`
+  }
 }
 
 const showDashboard = (data) => {

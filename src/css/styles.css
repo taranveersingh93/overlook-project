@@ -295,6 +295,10 @@ body::-webkit-scrollbar {
   overflow-y: scroll;
 }
 
+.display-grid h2 {
+  opacity: 0.5;
+}
+
 .display-grid::-webkit-scrollbar {
   display: none;
 }
