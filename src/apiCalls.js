@@ -25,7 +25,11 @@ const convertFetchToJSON = url => {
 
 const getAllBookings = () => {
   return convertFetchToJSON(`http://localhost:3001/api/v1/bookings`)
-    .then(data => data.bookings)
+    .then(data => {
+      if (data.bookings) {
+        return data.bookings;
+      }
+    })
     .catch(err => console.error(err)); 
 }
 
@@ -61,7 +65,7 @@ const getUser = () => {
   const queryID = username.slice(8);
   convertFetchToJSON(`http://localhost:3001/api/v1/customers/${queryID}`)
     .then(user => {
-      if (!user.message) {
+      if (user.id) {
         pageData.currentView = "myBookingsView"
         prepareDashboard(user)
       } else {
@@ -78,7 +82,7 @@ const getUser = () => {
 const getRooms = () => {
   return convertFetchToJSON('http://localhost:3001/api/v1/rooms')
     .then(response => {
-      if (!response.message) {
+      if (response.rooms) {
         const roomsInfo = response.rooms;
         pageData.allRooms = roomsInfo.map(room => addPicture(room));
       } else {
@@ -110,7 +114,6 @@ const postBooking = (userID, date, roomNumber) => {
   })
     .then(data => data.json())
     .then(response => {
-      console.log(response.message)
       if (response.message.includes("successfully posted")) {
         refreshBookings(date, roomNumber);
       } else {
