@@ -3,13 +3,20 @@ import {
   username,
   showGenericLoginError,
   showLoginError,
-  showDashboard
+  showDashboard,
+  setDisplaySuccessMessage,
+  showNewRooms
 } from './domUpdates'
 import {
   addPicture
 } from './rooms'
+import {
+  makeBody
+} from './helperFunctions'
 
-const pageData = {};
+const pageData = {
+  currentView: "loginView"
+};
 
 const convertFetchToJSON = url => {
   return fetch(url).then(response => response.json());
@@ -45,6 +52,7 @@ const getUser = () => {
   convertFetchToJSON(`http://localhost:3001/api/v1/customers/${queryID}`)
     .then(user => {
       if (!user.message) {
+        pageData.currentView = "myBookingsView"
         prepareDashboard(user)
       } else {
         console.log(data.message)
@@ -67,8 +75,33 @@ const getRooms = () => {
     })
 }
 
+const refreshBookings = (date, roomNumber) => {
+  setUserData(pageData.currentUser)
+    .then(() => {
+      showNewRooms()
+      setDisplaySuccessMessage(date, roomNumber);
+    })
+}
+
+const postBooking = (userID, date, roomNumber) => {
+  const body = makeBody(userID, date, roomNumber);
+  fetch('http://localhost:3001/api/v1/bookings', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => {
+      if (!response.message) {
+        refreshBookings(date, roomNumber);
+      }
+    })
+}
+
 export {
   getUser,
-  pageData
+  pageData,
+  postBooking
 }
 

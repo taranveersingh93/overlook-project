@@ -12,7 +12,7 @@ const generateCurrentDate = () => {
   if (date < 10) {
     date = `0${date.toString()}`;
   } else {
-    date = month.toString();
+    date = date.toString();
   }
   const fullDate = Number(year+month+date);
   return fullDate;
@@ -32,9 +32,51 @@ const correctCase = phrase => {
   return newWords.join(" ");
 }
 
+const formatDate = date => {
+  const inputDate = date.toString();
+  const year = inputDate.slice(0,4);
+  const month = inputDate.slice(5,7);
+  const newDate = inputDate.slice(8);
+  const usableDate = year+month+newDate;
+  return usableDate;
+}
+
+const humanizeDate = date => {
+  const inputDate = date.toString();
+  const year = inputDate.slice(0,4);
+  const month = inputDate.slice(5,7);
+  const newDate = inputDate.slice(8);
+  const months = {
+    "01": "January",
+    "02": "February",
+    "03": "March",
+    "04": "April",
+    "05": "May",
+    "06": "June",
+    "07": "July",
+    "08": "August",
+    "09": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  };
+  return `${months[month]} ${newDate}, ${year}`;
+}
+
+const makeBody = (userID, date, roomNumber) => {
+  return {
+    "userID": Number(userID),
+    "date": date.toString().replaceAll("-", "/"),
+    "roomNumber": Number(roomNumber)
+  };
+}
+
 export {
   generateCurrentDate,
   hideElement,
   showElement,
-  correctCase
+  correctCase,
+  formatDate,
+  humanizeDate,
+  makeBody
 }

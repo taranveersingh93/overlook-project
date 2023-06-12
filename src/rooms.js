@@ -13,10 +13,62 @@ const addPicture = room => {
 }
 
 const findRoomFromBooking = (rooms, booking) => {
-  return rooms.find(room => room.number === booking.roomNumber)
+  return rooms.find(room => room.number === booking.roomNumber);
 } 
+
+const getUniqueRoomsFromBookings = bookings => {
+  const rooms = bookings.map(booking => booking.roomNumber.toString());
+  const uniqueRooms = [...new Set(rooms)];
+  return uniqueRooms;
+}
+
+const findAvailableRooms = (allRooms, bookings) => { 
+  const unavailableRooms = getUniqueRoomsFromBookings(bookings).map(room => room.toString());
+  const availableRooms = allRooms.filter(room => !unavailableRooms.includes(room.number.toString()));
+  return availableRooms;
+}
+
+const filterRoomsByType = (rooms, value) => {
+  if (value === "-") {
+    return rooms;
+  } else {
+    const workingValue = (value.replaceAll("-", " ")).toLowerCase();
+    return rooms.filter(room => room.roomType === workingValue);
+  }
+}
+
+const filterRoomsByNumBeds = (rooms, value) => {
+  if (value === "-") {
+    return rooms;
+  } else {
+    return rooms.filter(room => room.numBeds === Number(value));
+  }
+}
+
+const filterRoomsByCost = (rooms, value) => {
+  if (value === "-") {
+    return rooms;
+  } else {
+    const workingValue = Number(value.slice(-3));
+    return rooms.filter(room => (room.costPerNight) < workingValue);
+  }
+}
+
+const filterAvailableRooms = (rooms, typeOfFilter, valueOfFilter) => {
+  const map = {
+    "-": () => rooms,
+    roomType: () => filterRoomsByType(rooms, valueOfFilter),
+    numBeds: () => filterRoomsByNumBeds(rooms, valueOfFilter),
+    cost: () => filterRoomsByCost(rooms, valueOfFilter)    
+  };
+  return map[typeOfFilter]();
+}
+
 
 export {
   addPicture,
-  findRoomFromBooking
+  findRoomFromBooking,
+  getUniqueRoomsFromBookings,
+  findAvailableRooms,
+  filterAvailableRooms
 }

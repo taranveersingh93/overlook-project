@@ -5,9 +5,15 @@ import {
   activateLoginBtn,
   submitUserData,
   selectRadio,
-  displayBookingInfo,
+  displayInfo,
   changeCurrentBookingsView,
-  switchBookingView
+  switchBookingView,
+  actOnSearchIcon,
+  changeFilterValue,
+  showNewRooms,
+  refreshFilter,
+  resizeDisplay,
+  actOnRoomCard
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -17,6 +23,11 @@ import './images/suite.jpg'
 import './images/resort.jpg'
 import './images/resort-2.jpg'
 import './images/resort-3.jpg'
+import './images/calendar.png'
+import './images/refresh.png'
+import './images/search.png'
+import './images/cross.png'
+
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
@@ -34,6 +45,16 @@ const websiteView = document.querySelector('.website-view');
 const bookingListGrid = document.querySelector('.booking-list-grid');
 const chooseBookingList = document.querySelector('.choose-booking-list');
 const chooseBookingContainer = document.querySelector('.choose-booking');
+const roomSearchContainer = document.querySelector('#roomSearchContainer');
+const roomGrid = document.querySelector('.room-grid');
+const newBookingsDisplay = document.querySelector('.new-bookings-display');
+const filterType = document.querySelector('#filterType');
+const filterValues = document.querySelector('#filterValues');
+const filterSearchIcon = document.querySelector('#filterSearchIcon');
+const filterRefreshIcon = document.querySelector('#filterRefreshIcon');
+const displayText1 = document.querySelector('.display-text-1');
+const displayText2 = document.querySelector('.display-text-2');
+const bookButtons = document.querySelectorAll('.book-btn');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -49,30 +70,67 @@ radioButtons.forEach(button => {
 });
 bookingListGrid.addEventListener("click", function(e) {
   if (e.target.closest(".current-booking-card")) {
-    displayBookingInfo(e.target.closest(".current-booking-card").id)
+    displayInfo(e.target.closest(".current-booking-card").id)
   }
 });
 bookingListGrid.addEventListener("keypress", function(e) {
   if (e.target.closest(".current-booking-card") && e.key ==="Enter") {
-    displayBookingInfo(e.target.closest(".current-booking-card").id)
+    displayInfo(e.target.closest(".current-booking-card").id)
+  }
+});
+roomGrid.addEventListener("click", function(e) {
+  if (e.target.closest(".room-card")) {
+    actOnRoomCard(e.target)
+  }
+});
+roomGrid.addEventListener("keypress", function(e) {
+  if (e.target.closest(".room-card") && e.key === "Enter") {
+    actOnRoomCard(e.target);
   }
 });
 chooseBookingList.addEventListener("click", function(e) {
   if (e.target.classList.contains("list-button") && e.target.classList.contains("unselected-button")) {
     changeCurrentBookingsView(e.target.id);
   }
-})
+});
 chooseBookingList.addEventListener("keypress", function(e) {
   if (e.target.classList.contains("list-button") && e.target.classList.contains("unselected-button") && e.key === "Enter") {
     changeCurrentBookingsView(e.target.id);
   }
-})
+});
 chooseBookingContainer.addEventListener("click", function(e) {
-  console.log(e.target)
-  if (e.target.classList.contains("bookings-button")) {
+  if (e.target.classList.contains("unselected-booking")) {
     switchBookingView(e.target.id)
   }
+});
+chooseBookingContainer.addEventListener("keypress", function(e) {
+  if (e.target.classList.contains("unselected-booking") && e.key === "Enter") {
+    switchBookingView(e.target.id);
+  }
+});
+roomSearchContainer.addEventListener("click", function(e) {
+  actOnSearchIcon(e.target);
+});
+roomSearchContainer.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    actOnSearchIcon(e.target);
+  }
+});
+filterType.addEventListener("change", changeFilterValue);
+filterSearchIcon.addEventListener("click", showNewRooms);
+filterSearchIcon.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    showNewRooms();
+  }
+});
+filterRefreshIcon.addEventListener("click", refreshFilter);
+filterRefreshIcon.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    refreshFilter();
+  }
 })
+window.addEventListener("resize", resizeDisplay);
+
 
 // Exports
 export {
@@ -84,5 +142,11 @@ export {
   loginFeedback,
   loginView,
   websiteView,
-  bookingListGrid
+  bookingListGrid,
+  roomGrid,
+  newBookingsDisplay,
+  filterValues,
+  filterType,
+  displayText1,
+  displayText2
 }

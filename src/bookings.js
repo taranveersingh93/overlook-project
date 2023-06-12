@@ -1,4 +1,7 @@
 import { findRoomFromBooking } from './rooms'
+import {
+  formatDate
+} from './helperFunctions'
 
 const filterBookingsByUser = (bookings, user) => bookings.filter(booking => booking.userID.toString() === user.id.toString());
 
@@ -21,9 +24,16 @@ const setBookingsOfInterest = (viewID, bookings, currentDate) => {
   return bookings;
 }
 
+const filterBookingsByDate = (bookings, date) => {
+  const usableDate = formatDate(date);
+  const filteredBookings = bookings.filter(booking => formatDate(booking.date) === usableDate);
+  return filteredBookings;
+}
+
 export {
   filterBookingsByUser,
   checkIfUpcoming,
   calculateCost,
-  setBookingsOfInterest
+  setBookingsOfInterest,
+  filterBookingsByDate
 }
