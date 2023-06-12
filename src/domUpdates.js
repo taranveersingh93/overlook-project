@@ -346,6 +346,8 @@ const switchBookingView = clickedView => {
   changeBackground(clickedView);
   if (clickedView === "newBookingsView") {
     showNewRooms();
+  } else {
+    changeCurrentBookingsView("allBookings");
   }
 }
 
