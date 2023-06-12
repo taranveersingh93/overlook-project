@@ -29,10 +29,10 @@ const findAvailableRooms = (allRooms, bookings) => {
 }
 
 const filterRoomsByType = (rooms, value) => {
-  const workingValue = (value.replaceAll("-", " ")).toLowerCase();
-  if (workingValue === "-") {
+  if (value === "-") {
     return rooms;
   } else {
+    const workingValue = (value.replaceAll("-", " ")).toLowerCase();
     return rooms.filter(room => room.roomType === workingValue);
   }
 }
@@ -46,10 +46,10 @@ const filterRoomsByNumBeds = (rooms, value) => {
 }
 
 const filterRoomsByCost = (rooms, value) => {
-  const workingValue = Number(value.slice(-3));
-  if (workingValue === "-") {
+  if (value === "-") {
     return rooms;
   } else {
+    const workingValue = Number(value.slice(-3));
     return rooms.filter(room => (room.costPerNight) < workingValue);
   }
 }

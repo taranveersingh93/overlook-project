@@ -77,6 +77,7 @@ const hideLoginError = () => {
 }
 
 const submitUserData = () => {
+
   const userInput = usernameInput.value;
   password = passwordInput.value;
   const ID = Number(userInput.slice(8))
@@ -98,8 +99,9 @@ const selectRadio = (e) => {
 }
 
 const fixColumns = () => {
-  let columns = 4;
-  if (window.innerWidth < 1000) {
+  let columns;
+  console.log(window.innerWidth)
+  if (window.innerWidth < 1200) {
     columns = 1;
   } else {
     columns = 2;
@@ -251,6 +253,12 @@ const renderDashboard = data => {
 }
 
 const renderRooms = (rooms) => {
+  const newBookingsRibbon = document.querySelector('.new-bookings-ribbon')
+  if (window.innerWidth < 1200) {
+    newBookingsRibbon.style.flexDirection = "column";
+  } else {
+    newBookingsRibbon.style.flexDirection = "row";
+  }
   const roomData = makeRoomsColumnData(rooms)
   roomGrid.innerHTML = '';
   roomGrid.innerHTML = createGridHTML(roomData, "room");
@@ -276,6 +284,7 @@ const toggleViewButtons = buttons => {
 }
 
 const changeBackground = view => {
+  pageData.currentView = view;
   const map = {
     "myBookings": "url('.././images/resort-2.jpg')",
     "newBookings": "url('.././images/resort-3.jpg')"
@@ -410,6 +419,17 @@ const refreshFilter = () => {
   showNewRooms();
 }
 
+const resizeDisplay = () => {
+  console.log(window.innerWidth)
+  console.log(pageData.currentView)
+  if (pageData.currentView === "myBookingsView") {
+    console.log("triggered")
+    showDashboard(pageData);
+  } else if (pageData.currentView === "newBookingsView"){
+    showNewRooms();
+  }
+}
+
 export {
   activateLoginBtn,
   username,
@@ -425,5 +445,6 @@ export {
   actOnSearchIcon,
   changeFilterValue,
   showNewRooms,
-  refreshFilter
+  refreshFilter,
+  resizeDisplay
 }

@@ -9,7 +9,9 @@ import {
   addPicture
 } from './rooms'
 
-const pageData = {};
+const pageData = {
+  currentView: "loginView"
+};
 
 const convertFetchToJSON = url => {
   return fetch(url).then(response => response.json());
@@ -45,6 +47,7 @@ const getUser = () => {
   convertFetchToJSON(`http://localhost:3001/api/v1/customers/${queryID}`)
     .then(user => {
       if (!user.message) {
+        pageData.currentView = "myBookingsView"
         prepareDashboard(user)
       } else {
         console.log(data.message)

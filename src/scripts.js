@@ -11,7 +11,8 @@ import {
   actOnSearchIcon,
   changeFilterValue,
   showNewRooms,
-  refreshFilter
+  refreshFilter,
+  resizeDisplay
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -25,6 +26,7 @@ import './images/calendar.png'
 import './images/refresh.png'
 import './images/search.png'
 import './images/cross.png'
+import { pageData } from './apiCalls';
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
@@ -124,6 +126,7 @@ filterRefreshIcon.addEventListener("keypress", function(e) {
   }
 })
 
+window.addEventListener("resize", resizeDisplay);
 // Exports
 export {
   loginBtn,
