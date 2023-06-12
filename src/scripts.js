@@ -95,12 +95,12 @@ chooseBookingList.addEventListener("keypress", function(e) {
   }
 });
 chooseBookingContainer.addEventListener("click", function(e) {
-  if (e.target.classList.contains("bookings-button")) {
+  if (e.target.classList.contains("unselected-booking")) {
     switchBookingView(e.target.id)
   }
 });
 chooseBookingContainer.addEventListener("keypress", function(e) {
-  if (e.target.classList.contains("bookings-button") && e.key === "Enter") {
+  if (e.target.classList.contains("unselected-booking") && e.key === "Enter") {
     switchBookingView(e.target.id);
   }
 });
