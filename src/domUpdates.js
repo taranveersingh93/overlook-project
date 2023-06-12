@@ -100,7 +100,6 @@ const selectRadio = (e) => {
 
 const fixColumns = () => {
   let columns;
-  console.log(window.innerWidth)
   if (window.innerWidth < 1200) {
     columns = 1;
   } else {
@@ -343,7 +342,7 @@ const switchBookingView = clickedView => {
   flipViews(mainViews)
   toggleViewButtons(bookingButtons);
   changeBackground(clickedView);
-  if (clickedView === "newBookings") {
+  if (clickedView === "newBookingsView") {
     showNewRooms();
   }
 }
@@ -420,10 +419,7 @@ const refreshFilter = () => {
 }
 
 const resizeDisplay = () => {
-  console.log(window.innerWidth)
-  console.log(pageData.currentView)
   if (pageData.currentView === "myBookingsView") {
-    console.log("triggered")
     showDashboard(pageData);
   } else if (pageData.currentView === "newBookingsView"){
     showNewRooms();
