@@ -405,6 +405,11 @@ const changeFilterValue = () => {
   filterValues.innerHTML = htmlCode;
 }
 
+const refreshFilter = () => {
+  filterType.value = "-";
+  showNewRooms();
+}
+
 export {
   activateLoginBtn,
   username,
@@ -419,5 +424,6 @@ export {
   switchBookingView,
   actOnSearchIcon,
   changeFilterValue,
-  showNewRooms
+  showNewRooms,
+  refreshFilter
 }

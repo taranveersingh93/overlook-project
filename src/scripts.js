@@ -10,7 +10,8 @@ import {
   switchBookingView,
   actOnSearchIcon,
   changeFilterValue,
-  showNewRooms
+  showNewRooms,
+  refreshFilter
 } from './domUpdates';
 
 import './images/junior-suite.jpg'
@@ -47,6 +48,7 @@ const newBookingsDisplay = document.querySelector('.new-bookings-display');
 const filterType = document.querySelector('#filterType');
 const filterValues = document.querySelector('#filterValues');
 const filterSearchIcon = document.querySelector('#filterSearchIcon');
+const filterRefreshIcon = document.querySelector('#filterRefreshIcon');
 
 // Event listeners
 radioOptions.addEventListener("click", activateLoginBtn);
@@ -112,9 +114,15 @@ filterType.addEventListener("change", changeFilterValue);
 filterSearchIcon.addEventListener("click", showNewRooms);
 filterSearchIcon.addEventListener("keypress", function(e) {
   if (e.key === "Enter") {
-    showNewRooms()
+    showNewRooms();
   }
 });
+filterRefreshIcon.addEventListener("click", refreshFilter);
+filterRefreshIcon.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    refreshFilter();
+  }
+})
 
 // Exports
 export {
