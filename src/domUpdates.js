@@ -437,6 +437,13 @@ const setDisplaySuccessMessage = (date, roomNumber) => {
   setTimeout(() => {displayText2.classList.remove('show-feedback')}, 4001)
 }
 
+const setDisplayFailMessage = () => {
+  const failMessage = "Sorry, your booking failed. Please try again."
+  displayText2.innerText = failMessage;
+  displayText2.classList.add("show-feedback");
+  setTimeout(() => {displayText2.classList.remove('show-feedback')}, 4001)
+}
+
 const bookRoom = (roomNumber) => {
   const dateSelected = document.querySelector('#calendar').value;
   const userID = pageData.currentUser.id;
@@ -471,5 +478,6 @@ export {
   resizeDisplay,
   setDisplaySuccessMessage,
   bookRoom,
-  actOnRoomCard
+  actOnRoomCard,
+  setDisplayFailMessage
 }
