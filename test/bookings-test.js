@@ -1,5 +1,4 @@
 import chai from 'chai';
-const expect = chai.expect;
 const assert = chai.assert;
 
 import {
@@ -13,7 +12,8 @@ import {
 import {
   sampleBookings,
   sampleUser,
-  dummyUser
+  dummyUser,
+  smallBookings
 } from '../src/data/sampleData'
 
 describe('Check Booking functions existence', () => {
@@ -110,46 +110,30 @@ describe('Test booking functionality', () => {
   it('should return old bookings if viewID is pastBookings', () => {
     const viewID = "pastBookings";
     const currentDate = 20230612;
-    const bookings = [
-      {"id":"5fwrgu4i7k55hl6t9","userID":38,"date":"2023/12/14","roomNumber":14},
-      {"id":"5fwrgu4i7k55hl6ta","userID":25,"date":"2022/01/11","roomNumber":9},
-      {"id":"5fwrgu4i7k55hl6tb","userID":49,"date":"2022/02/06","roomNumber":5}
-    ];
     const expectedBookings = [
       {"id":"5fwrgu4i7k55hl6ta","userID":25,"date":"2022/01/11","roomNumber":9},
-      {"id":"5fwrgu4i7k55hl6tb","userID":49,"date":"2022/02/06","roomNumber":5}      
+      {"id":"5fwrgu4i7k55hl6tb","userID":49,"date":"2022/01/11","roomNumber":5}     
     ];
-    const bookingsOfInt = setBookingsOfInterest(viewID, bookings, currentDate);
+    const bookingsOfInt = setBookingsOfInterest(viewID, smallBookings, currentDate);
     assert.deepEqual(bookingsOfInt, expectedBookings);
   })
 
   it('should return upcoming bookings if viewID is upcomingBookings', () => {
     const viewID = "upcomingBookings";
     const currentDate = 20230612;
-    const bookings = [
-      {"id":"5fwrgu4i7k55hl6t9","userID":38,"date":"2023/12/14","roomNumber":14},
-      {"id":"5fwrgu4i7k55hl6ta","userID":25,"date":"2022/01/11","roomNumber":9},
-      {"id":"5fwrgu4i7k55hl6tb","userID":49,"date":"2022/02/06","roomNumber":5}
-    ];
     const expectedBookings = [
       {"id":"5fwrgu4i7k55hl6t9","userID":38,"date":"2023/12/14","roomNumber":14},
     ];
-    const bookingsOfInt = setBookingsOfInterest(viewID, bookings, currentDate);
+    const bookingsOfInt = setBookingsOfInterest(viewID, smallBookings, currentDate);
     assert.deepEqual(bookingsOfInt, expectedBookings);
   });
 
   it('should return all bookings on a particular date', () => {
-    const bookings = [
-      {"id":"5fwrgu4i7k55hl6t9","userID":38,"date":"2023/12/14","roomNumber":14},
-      {"id":"5fwrgu4i7k55hl6ta","userID":25,"date":"2022/01/11","roomNumber":9},
-      {"id":"5fwrgu4i7k55hl6tb","userID":49,"date":"2022/01/11","roomNumber":5}
-    ];
-
     const expectedBookings = [
       {"id":"5fwrgu4i7k55hl6ta","userID":25,"date":"2022/01/11","roomNumber":9},
       {"id":"5fwrgu4i7k55hl6tb","userID":49,"date":"2022/01/11","roomNumber":5}
     ];
-    const filteredBookings = filterBookingsByDate(bookings, "2022/01/11");
+    const filteredBookings = filterBookingsByDate(smallBookings, "2022/01/11");
     assert.deepEqual(filteredBookings, expectedBookings);
   })
 
