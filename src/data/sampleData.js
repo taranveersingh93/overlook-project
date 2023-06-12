@@ -9,8 +9,10 @@ const sampleBookings = [
   ];
 
 const sampleUser = {"id":13,"name":"Christina Kulas"};
+const dummyUser = {"id": 51};
 
 export {
   sampleBookings,
-  sampleUser
+  sampleUser,
+  dummyUser
 }
