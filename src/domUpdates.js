@@ -154,7 +154,7 @@ const createSingleRoomHtml = room => {
   htmlCode += `
   <div class="room-card" tabindex="0" role="button" id="${room.roomNumber}">
     <div class="card-img-container">
-      <img class="room-card-img card-img" src="${room.picture}">
+      <img class="room-card-img card-img" src="${room.picture}" alt="Room ${room.roomNumber}. A picture of ${room.roomType}">
       <section class="card-info">
         <p>Room Type: ${room.roomType}</p>
         <p>Bed Size: ${room.bedSize}</p>
@@ -180,7 +180,7 @@ const createSingleBookingHtml = booking => {
   htmlCode += `
   <div class="current-booking-card" tabindex="0" role="button" id="${booking.id}">
     <div class="card-img-container">
-      <img class="current-booking-card-img card-img" src="${booking.picture}">
+      <img class="current-booking-card-img card-img" src="${booking.picture}" alt="Room ${booking.roomNumber}. A picture of ${booking.roomType}">
       <section class="card-info">
         <p>Room Type: ${booking.roomType}</p>
         <p>Bed Size: ${booking.bedSize}</p>
@@ -346,6 +346,8 @@ const switchBookingView = clickedView => {
   changeBackground(clickedView);
   if (clickedView === "newBookingsView") {
     showNewRooms();
+  } else {
+    changeCurrentBookingsView("allBookings");
   }
 }
 
