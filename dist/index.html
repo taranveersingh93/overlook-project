@@ -25,11 +25,13 @@
       <div class="inputs">
         <div class="username-container input-container">
           <p class="username input-label">Username: </p>
-          <input type="text" class="username-input">
+          <input type="text" class="username-input" id="usernameInput">
+          <label for="usernameInput" class="hidden">Enter username</label>
         </div>
         <div class="password-container input-container">
           <p class="password input-label">Password: </p>
-          <input type="password" class="password-input">
+          <input type="password" class="password-input" id="passwordInput">
+          <label for="passwordInput" class="hidden">Enter password</label>
         </div>
       </div>
       <p class="login-feedback invisible">Incorrect Login Credentials</p>
@@ -85,12 +87,13 @@
           <div class="new-bookings-ribbon">
             <section id="roomSearchContainer" class="new-bookings-ribbon-element left-filter filter-element">
               <div class="date-container">
+                <label for="calendar" class="hidden"> Pick a date for your booking </label>
                 <input type="text" id="calendar" class="calender-input" placeholder="Pick a date">
-                <img class="icon" id="calendarIcon" tabindex="0" role="button" src="./images/calendar.png"> 
+                <img class="icon" id="calendarIcon" tabindex="0" role="button" src="./images/calendar.png" alt="calendar icon"> 
               </div>
               <div class="calendar-icon-container">
-                <img class="icon" id="calendarRefreshIcon" tabindex="0" role="button" src="./images/refresh.png">
-                <img class="icon search-room" tabindex="0" role="button" id="calendarSearchIcon" src="./images/search.png">
+                <img class="icon" id="calendarRefreshIcon" tabindex="0" role="button" src="./images/refresh.png" alt="refresh icon">
+                <img class="icon search-room" tabindex="0" role="button" id="calendarSearchIcon" src="./images/search.png" alt="search icon">
               </div>
             </section>
             <section class="new-bookings-display new-bookings-ribbon-element">
@@ -118,8 +121,8 @@
                 </select>
               </div>
               <div class="right-filter-icon-container">
-                <img class="icon" id="filterRefreshIcon" tabindex="0" role="button" src="./images/refresh.png">
-                <img class="icon search-room" tabindex="0" role="button" id="filterSearchIcon" src="./images/search.png">
+                <img class="icon" id="filterRefreshIcon" tabindex="0" role="button" src="./images/refresh.png" alt="refresh icon">
+                <img class="icon search-room" tabindex="0" role="button" id="filterSearchIcon" src="./images/search.png" alt="search icon">
               </div>
             </section>            
           </div>
