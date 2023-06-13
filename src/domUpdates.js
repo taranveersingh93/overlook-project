@@ -159,7 +159,7 @@ const createSingleRoomHtml = room => {
   htmlCode += `
   <div class="room-card" tabindex="0" role="button" id="${room.roomNumber}">
     <div class="card-img-container">
-      <img class="room-card-img card-img" src="${room.picture}">
+      <img class="room-card-img card-img" src="${room.picture}" alt="picture of ${room.roomType} for room ${room.roomNumber}">
       <section class="card-info">
         <p>Room Type: ${room.roomType}</p>
         <p>Bed Size: ${room.bedSize}</p>
@@ -185,7 +185,7 @@ const createSingleBookingHtml = booking => {
   htmlCode += `
   <div class="current-booking-card" tabindex="0" role="button" id="${booking.id}">
     <div class="card-img-container">
-      <img class="current-booking-card-img card-img" src="${booking.picture}">
+      <img class="current-booking-card-img card-img" src="${booking.picture}" alt="picture of ${booking.roomType} for room ${booking.roomNumber}">
       <section class="card-info">
         <p>Room Type: ${booking.roomType}</p>
         <p>Bed Size: ${booking.bedSize}</p>
@@ -496,5 +496,7 @@ export {
   resizeDisplay,
   setDisplaySuccessMessage,
   bookRoom,
-  actOnRoomCard
+  actOnRoomCard,
+  setUserForAccessibility,
+  setDisplayFailMessage
 }
