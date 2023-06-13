@@ -28,8 +28,6 @@ import {
 } from './datePicker';
 
 import {
-  showElement,
-  hideElement,
   generateCurrentDate,
   correctCase,
   humanizeDate
@@ -51,7 +49,16 @@ import {
 let username;
 let password;
 
-let timerID; 
+let timerID;
+
+const hideElement = element => {
+  element.classList.add('hidden');
+}
+
+const showElement = element => {
+  element.classList.remove('hidden');
+}
+
 const activateLoginBtn = () => {
   const userTypeSelected = customerLoginRadio.checked || managerLoginRadio.checked;
   const userInputEntered = usernameInput.value && passwordInput.value;
