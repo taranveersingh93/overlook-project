@@ -28,8 +28,6 @@ import {
 } from './datePicker';
 
 import {
-  showElement,
-  hideElement,
   generateCurrentDate,
   correctCase,
   humanizeDate
@@ -51,11 +49,19 @@ import {
 let username;
 let password;
 
-let timerID; 
+let timerID;
+
+const hideElement = element => {
+  element.classList.add('hidden');
+}
+
+const showElement = element => {
+  element.classList.remove('hidden');
+}
+
 const activateLoginBtn = () => {
-  const userTypeSelected = customerLoginRadio.checked || managerLoginRadio.checked;
   const userInputEntered = usernameInput.value && passwordInput.value;
-  if (userTypeSelected && userInputEntered) {
+  if (userInputEntered) {
     loginBtn.disabled = false;
     loginBtn.classList.add('active-login');
   } else {
@@ -153,7 +159,7 @@ const createSingleRoomHtml = room => {
   htmlCode += `
   <div class="room-card" tabindex="0" role="button" id="${room.roomNumber}">
     <div class="card-img-container">
-      <img class="room-card-img card-img" src="${room.picture}" alt="${room.roomType} room image">
+      <img class="room-card-img card-img" src="${room.picture}">
       <section class="card-info">
         <p>Room Type: ${room.roomType}</p>
         <p>Bed Size: ${room.bedSize}</p>
@@ -179,7 +185,7 @@ const createSingleBookingHtml = booking => {
   htmlCode += `
   <div class="current-booking-card" tabindex="0" role="button" id="${booking.id}">
     <div class="card-img-container">
-      <img class="current-booking-card-img card-img" src="${booking.picture}" alt="${booking.roomType} room image">
+      <img class="current-booking-card-img card-img" src="${booking.picture}">
       <section class="card-info">
         <p>Room Type: ${booking.roomType}</p>
         <p>Bed Size: ${booking.bedSize}</p>
@@ -247,7 +253,12 @@ const renderName = name => {
 const renderDashboard = data => {
   const gridData = makeBookingsColumnData(data.bookingsOfInterest);
   bookingListGrid.innerHTML = '';
-  bookingListGrid.innerHTML = createGridHTML(gridData, "booking");
+
+  if (gridData.length) {
+    bookingListGrid.innerHTML = createGridHTML(gridData, "booking");
+  } else {
+    bookingListGrid.innerHTML = `<h2>Sorry, you don't have any bookings</h2>`
+  }
   renderName(data.currentUser.name);
   renderTotal(data.bookingsOfInterest);
 }
@@ -259,9 +270,14 @@ const renderRooms = (rooms) => {
   } else {
     newBookingsRibbon.style.flexDirection = "row";
   }
+  
   const roomData = makeRoomsColumnData(rooms)
   roomGrid.innerHTML = '';
-  roomGrid.innerHTML = createGridHTML(roomData, "room");
+  if (roomData.length) {
+    roomGrid.innerHTML = createGridHTML(roomData, "room");
+  } else {
+    roomGrid.innerHTML = `<h2>Sorry, you don't have any bookings</h2>`
+  }
 }
 
 const showDashboard = (data) => {
@@ -345,8 +361,6 @@ const switchBookingView = clickedView => {
   changeBackground(clickedView);
   if (clickedView === "newBookingsView") {
     showNewRooms();
-  } else {
-    renderDashboard(pageData);
   }
 }
 
@@ -436,6 +450,13 @@ const setDisplaySuccessMessage = (date, roomNumber) => {
   setTimeout(() => {displayText2.classList.remove('show-feedback')}, 4001)
 }
 
+const setDisplayFailMessage = () => {
+  const failMessage = "Sorry, your booking failed. Please try again."
+  displayText2.innerText = failMessage;
+  displayText2.classList.add("show-feedback");
+  setTimeout(() => {displayText2.classList.remove('show-feedback')}, 4001)
+}
+
 const bookRoom = (roomNumber) => {
   const dateSelected = document.querySelector('#calendar').value;
   const userID = pageData.currentUser.id;
@@ -475,6 +496,5 @@ export {
   resizeDisplay,
   setDisplaySuccessMessage,
   bookRoom,
-  actOnRoomCard,
-  setUserForAccessibility
+  actOnRoomCard
 }

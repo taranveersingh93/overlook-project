@@ -33,7 +33,7 @@ body::-webkit-scrollbar {
   min-width: 350px;
   max-width: 450px;
   min-height: 170px;
-  height: 30vh;
+  height: 18vh;
   max-height: 230px;
   border-radius: 25px;
   border: solid rgb(255, 255, 255, 0.1);
@@ -295,6 +295,10 @@ body::-webkit-scrollbar {
   overflow-y: scroll;
 }
 
+.display-grid h2 {
+  opacity: 0.5;
+}
+
 .display-grid::-webkit-scrollbar {
   display: none;
 }
@@ -491,6 +495,7 @@ body::-webkit-scrollbar {
 
 .filter-element {
   background-color: rgba(255, 255, 255, 0.477);
+  min-width: 300px;
 }
 
 .room-filter-container {

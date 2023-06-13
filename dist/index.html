@@ -12,7 +12,7 @@
 <body>
   <section class="login-view view hidden">
     <form class="login-container">
-      <div class="option-container">
+      <div class="option-container hidden">
         <section class="individual-option customer">
           <input type="radio" class="login-radio" id="customerLogin" name="login" value="customer-login">
           <label for="customerLogin">Customer</label>
@@ -24,12 +24,14 @@
       </div>
       <div class="inputs">
         <div class="username-container input-container">
-          <label class="username input-label" for="usernameInput">Username: </p>
+          <p class="username input-label">Username: </p>
           <input type="text" class="username-input" id="usernameInput">
+          <label for="usernameInput" class="hidden">Enter username</label>
         </div>
         <div class="password-container input-container">
-          <label class="password input-label" for="passwordInput">Password: </p>
+          <p class="password input-label">Password: </p>
           <input type="password" class="password-input" id="passwordInput">
+          <label for="passwordInput" class="hidden">Enter password</label>
         </div>
       </div>
       <p class="login-feedback invisible">Incorrect Login Credentials</p>
@@ -85,9 +87,9 @@
           <div class="new-bookings-ribbon">
             <section id="roomSearchContainer" class="new-bookings-ribbon-element left-filter filter-element">
               <div class="date-container">
-                <label class="hidden" for="calendar">Pick a date to book your room on</label>
+                <label for="calendar" class="hidden"> Pick a date for your booking </label>
                 <input type="text" id="calendar" class="calender-input" placeholder="Pick a date">
-                <img class="icon" id="calendarIcon" tabindex="0" role="button" src="./images/calendar.png" alt="calender icon"> 
+                <img class="icon" id="calendarIcon" tabindex="0" role="button" src="./images/calendar.png" alt="calendar icon"> 
               </div>
               <div class="calendar-icon-container">
                 <img class="icon" id="calendarRefreshIcon" tabindex="0" role="button" src="./images/refresh.png" alt="refresh icon">

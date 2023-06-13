@@ -27,8 +27,6 @@ import './images/resort-3.jpg'
 import './images/calendar.png'
 import './images/refresh.png'
 import './images/search.png'
-import './images/cross.png'
-
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');
@@ -58,7 +56,6 @@ const displayText2 = document.querySelector('.display-text-2');
 const bookButtons = document.querySelectorAll('.book-btn');
 
 // Event listeners
-radioOptions.addEventListener("click", activateLoginBtn);
 userInputs.addEventListener("keyup", activateLoginBtn);
 form.addEventListener("submit", function(e) {
   e.preventDefault();

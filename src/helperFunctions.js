@@ -18,14 +18,6 @@ const generateCurrentDate = () => {
   return fullDate;
 }
 
-const hideElement = element => {
-  element.classList.add('hidden');
-}
-
-const showElement = element => {
-  element.classList.remove('hidden');
-}
-
 const correctCase = phrase => {
   const words = phrase.split(" ");
   const newWords = words.map(word => word[0].toUpperCase() + word.slice(1))
@@ -73,10 +65,8 @@ const makeBody = (userID, date, roomNumber) => {
 
 export {
   generateCurrentDate,
-  hideElement,
-  showElement,
   correctCase,
   formatDate,
   humanizeDate,
-  makeBody
+  makeBody,
 }
