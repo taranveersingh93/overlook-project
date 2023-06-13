@@ -26,8 +26,6 @@ import './images/resort-3.jpg'
 import './images/calendar.png'
 import './images/refresh.png'
 import './images/search.png'
-import './images/cross.png'
-
 
 // DOM elements
 const loginBtn = document.querySelector('.login-button');

@@ -57,7 +57,6 @@ describe('Find rooms from bookings', () => {
   });
 
   it('should return nothing if no room found',() => {
-    console.log(sampleBookings[0])
     const foundRoom = findRoomFromBooking(smallRooms, sampleBookings[0]);
     assert.equal(foundRoom, undefined);
   })
