@@ -9,7 +9,7 @@ const checkIfUpcoming = (booking, currentDate) => {
   const bookedDate = booking.date;
   const refinedDate = Number(bookedDate.replaceAll("/", ""));
   return refinedDate > currentDate;
-}  
+}
 
 const calculateCost = (rooms, bookings) =>  Math.floor(bookings.reduce((total, booking) => total + findRoomFromBooking(rooms, booking).costPerNight, 0));
 
