@@ -60,9 +60,8 @@ const showElement = element => {
 }
 
 const activateLoginBtn = () => {
-  const userTypeSelected = customerLoginRadio.checked || managerLoginRadio.checked;
   const userInputEntered = usernameInput.value && passwordInput.value;
-  if (userTypeSelected && userInputEntered) {
+  if (userInputEntered) {
     loginBtn.disabled = false;
     loginBtn.classList.add('active-login');
   } else {

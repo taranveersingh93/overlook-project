@@ -68,5 +68,5 @@ export {
   correctCase,
   formatDate,
   humanizeDate,
-  makeBody
+  makeBody,
 }

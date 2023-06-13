@@ -57,7 +57,6 @@ const displayText2 = document.querySelector('.display-text-2');
 const bookButtons = document.querySelectorAll('.book-btn');
 
 // Event listeners
-radioOptions.addEventListener("click", activateLoginBtn);
 userInputs.addEventListener("keyup", activateLoginBtn);
 form.addEventListener("submit", function(e) {
   e.preventDefault();

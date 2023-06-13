@@ -30,10 +30,13 @@ const filterBookingsByDate = (bookings, date) => {
   return filteredBookings;
 }
 
+const sortBookingsByDateBooked = (bookings) => [...bookings].sort((a,b) => Number(formatDate(b.date)) - Number(formatDate(a.date)));
+
 export {
   filterBookingsByUser,
   checkIfUpcoming,
   calculateCost,
   setBookingsOfInterest,
-  filterBookingsByDate
+  filterBookingsByDate,
+  sortBookingsByDateBooked
 }
