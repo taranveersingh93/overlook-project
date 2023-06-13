@@ -6,14 +6,16 @@ import {
   checkIfUpcoming,
   calculateCost,
   setBookingsOfInterest,
-  filterBookingsByDate
+  filterBookingsByDate,
+  sortBookingsByDateBooked
 } from '../src/bookings'
 
 import {
   sampleBookings,
   sampleUser,
   dummyUser,
-  smallBookings
+  smallBookings,
+  arrangedBookings
 } from '../src/data/sampleData'
 
 describe('Check Booking functions existence', () => {
@@ -147,5 +149,10 @@ describe('Test booking functionality', () => {
   it('should return no booking if date does not match', () => {
     const filteredBookings = filterBookingsByDate(sampleBookings, "2026/02/21");
     assert.deepEqual(filteredBookings, []);
+  });
+
+  it('should sort bookings by date booked', () => {
+    const sortedBookings = sortBookingsByDateBooked(sampleBookings);
+    assert.deepEqual(sortedBookings, arrangedBookings);
   })
 });

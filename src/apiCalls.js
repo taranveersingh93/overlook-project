@@ -1,4 +1,7 @@
-import { filterBookingsByUser } from './bookings';
+import { 
+  filterBookingsByUser,
+  sortBookingsByDateBooked
+} from './bookings';
 import {
   username,
   showGenericLoginError,
@@ -37,7 +40,7 @@ const setUserData = (user) => {
   pageData.currentUser = user;
   return getAllBookings()
     .then(bookings => {
-      pageData.allBookings = bookings;
+      pageData.allBookings = sortBookingsByDateBooked(bookings);
       pageData.userBookings = filterBookingsByUser(pageData.allBookings, pageData.currentUser);      
       pageData.bookingsOfInterest = [...pageData.userBookings];
     })
