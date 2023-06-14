@@ -27,7 +27,7 @@ const convertFetchToJSON = url => {
 }
 
 const getAllBookings = () => {
-  return convertFetchToJSON(`http://localhost:3001/api/v1/bookings`)
+  return convertFetchToJSON(`http://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/bookings`)
     .then(data => {
       if (data.bookings) {
         return data.bookings;
@@ -66,7 +66,7 @@ const prepareDashboard = user => {
 
 const getUser = () => {
   const queryID = username.slice(8);
-  convertFetchToJSON(`http://localhost:3001/api/v1/customers/${queryID}`)
+  convertFetchToJSON(`http://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/customers/${queryID}`)
     .then(user => {
       if (user.id) {
         pageData.currentView = "myBookingsView"
@@ -83,7 +83,7 @@ const getUser = () => {
 }
 
 const getRooms = () => {
-  return convertFetchToJSON('http://localhost:3001/api/v1/rooms')
+  return convertFetchToJSON('http://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/rooms')
     .then(response => {
       if (response.rooms) {
         const roomsInfo = response.rooms;
@@ -108,7 +108,7 @@ const refreshBookings = (date, roomNumber) => {
 
 const postBooking = (userID, date, roomNumber) => {
   const body = makeBody(userID, date, roomNumber);
-  fetch('http://localhost:3001/api/v1/bookings', {
+  fetch('http://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/bookings', {
     method: 'POST',
     body: JSON.stringify(body),
     headers: {
