@@ -1158,7 +1158,7 @@ const convertFetchToJSON = url => {
 }
 
 const getAllBookings = () => {
-  return convertFetchToJSON(`http://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/bookings`)
+  return convertFetchToJSON(`https://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/bookings`)
     .then(data => {
       if (data.bookings) {
         return data.bookings;
@@ -1197,7 +1197,7 @@ const prepareDashboard = user => {
 
 const getUser = () => {
   const queryID = _domUpdates__WEBPACK_IMPORTED_MODULE_1__.username.slice(8);
-  convertFetchToJSON(`http://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/customers/${queryID}`)
+  convertFetchToJSON(`https://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/customers/${queryID}`)
     .then(user => {
       if (user.id) {
         pageData.currentView = "myBookingsView"
@@ -1214,7 +1214,7 @@ const getUser = () => {
 }
 
 const getRooms = () => {
-  return convertFetchToJSON('http://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/rooms')
+  return convertFetchToJSON('https://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/rooms')
     .then(response => {
       if (response.rooms) {
         const roomsInfo = response.rooms;
@@ -1239,7 +1239,7 @@ const refreshBookings = (date, roomNumber) => {
 
 const postBooking = (userID, date, roomNumber) => {
   const body = (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_3__.makeBody)(userID, date, roomNumber);
-  fetch('http://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/bookings', {
+  fetch('https://backend-overlook-7ee2a38f17a5.herokuapp.com/api/v1/bookings', {
     method: 'POST',
     body: JSON.stringify(body),
     headers: {
