@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "git+http://github.com/taranveersingh93/overlook-project.git"
+    "url": "git+https://github.com/taranveersingh93/overlook-project.git"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT",
